@@ -701,7 +701,7 @@ function renderRecentGames() {
 
       document.getElementById('discordLink').addEventListener('click', (e) => {
         e.preventDefault();
-        window.open('https://discord.gg/FAH4cZt6kG', '_blank');
+        window.open('/discord', '_blank');
       });
       
       document.getElementById('moneyLink').addEventListener('click', (e) => {
