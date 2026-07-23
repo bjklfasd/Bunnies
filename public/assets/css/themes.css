@@ -1,0 +1,179 @@
+:root {
+      --bg-primary: #231d2f;
+      --bg-secondary: rgba(35, 29, 47, 0.85);
+      --bg-card: rgba(35, 29, 47, 0.55);
+      --bg-container: rgba(20, 16, 30, 0.4);
+      --text-primary: #ffffff;
+      --text-secondary: #b7a0c9;
+      --text-accent: #d9b3ff;
+      --border-color: rgba(255, 255, 255, 0.04);
+      --shadow-color: rgba(0, 0, 0, 0.5);
+      --hover-bg: rgba(255, 255, 255, 0.08);
+      --input-bg: rgba(20, 16, 30, 0.6);
+      --game-card-bg: rgba(35, 29, 47, 0.6);
+      --game-card-hover: rgba(35, 29, 47, 0.85);
+      --popup-bg: #2a2238;
+      --scrollbar-thumb: #3d2b4f;
+      --site-font: 'Poppins', sans-serif;
+    }
+
+    .custom-select {
+      width: 100%;
+      padding: 10px 40px 10px 16px;
+      border-radius: 60px;
+      border: 1px solid var(--border-color, rgba(255,255,255,0.08));
+      background-color: var(--input-bg, #14101e);
+      color: var(--text-primary, #fff);
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      cursor: pointer;
+      transition: 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b7a0c9' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+    }
+    .custom-select:hover {
+      border-color: var(--text-accent, #d9b3ff);
+    }
+    .custom-select:focus {
+      border-color: var(--text-accent, #d9b3ff);
+    }
+    .custom-select option {
+      background: var(--popup-bg, #2a2238);
+      color: var(--text-primary, #fff);
+      padding: 8px;
+    }
+
+    .theme-midnight-purple {
+      --bg-primary: #1a1025;
+      --bg-secondary: rgba(26, 16, 37, 0.9);
+      --bg-card: rgba(26, 16, 37, 0.6);
+      --bg-container: rgba(10, 6, 18, 0.5);
+      --text-primary: #e8d5ff;
+      --text-secondary: #b89fd4;
+      --text-accent: #c89bff;
+      --border-color: rgba(180, 130, 255, 0.08);
+      --shadow-color: rgba(0, 0, 0, 0.5);
+      --hover-bg: rgba(180, 130, 255, 0.1);
+      --input-bg: rgba(10, 6, 18, 0.6);
+      --game-card-bg: rgba(26, 16, 37, 0.6);
+      --game-card-hover: rgba(26, 16, 37, 0.85);
+      --popup-bg: #1f1330;
+      --scrollbar-thumb: #5a3d7a;
+    }
+    .theme-arctic-freeze {
+  --bg-primary: #dceefd;
+  --bg-secondary: rgba(220, 238, 253, 0.92);
+  --bg-card: rgba(255, 255, 255, 0.65);
+  --bg-container: rgba(245, 250, 255, 0.75);
+
+  --text-primary: #2d4f6b;
+  --text-secondary: #5f87a8;
+  --text-accent: #6aaed6;
+
+  --border-color: rgba(106, 174, 214, 0.18);
+  --shadow-color: rgba(50, 90, 130, 0.12);
+
+  --hover-bg: rgba(106, 174, 214, 0.15);
+  --input-bg: rgba(255, 255, 255, 0.7);
+
+  --game-card-bg: rgba(240, 247, 255, 0.8);
+  --game-card-hover: rgba(230, 242, 255, 0.95);
+
+  --popup-bg: #eaf5ff;
+  --scrollbar-thumb: #8abfdf;
+}
+    .theme-forest-night {
+      --bg-primary: #0d1a0f;
+      --bg-secondary: rgba(13, 26, 15, 0.9);
+      --bg-card: rgba(13, 26, 15, 0.6);
+      --bg-container: rgba(8, 18, 10, 0.5);
+      --text-primary: #b8d4b8;
+      --text-secondary: #7fa37f;
+      --text-accent: #5fb85f;
+      --border-color: rgba(80, 200, 80, 0.08);
+      --shadow-color: rgba(0, 0, 0, 0.5);
+      --hover-bg: rgba(80, 200, 80, 0.1);
+      --input-bg: rgba(8, 18, 10, 0.6);
+      --game-card-bg: rgba(13, 26, 15, 0.6);
+      --game-card-hover: rgba(13, 26, 15, 0.85);
+      --popup-bg: #102012;
+      --scrollbar-thumb: #2a5a2a;
+    }
+    .theme-cherry-blossom {
+  --bg-primary: #fbeaf0;
+  --bg-secondary: rgba(251, 234, 240, 0.92);
+  --bg-card: rgba(255, 255, 255, 0.68);
+  --bg-container: rgba(255, 247, 250, 0.75);
+
+  --text-primary: #6d4b5b;
+  --text-secondary: #9c7486;
+  --text-accent: #f29ab2;
+
+  --border-color: rgba(242, 154, 178, 0.18);
+  --shadow-color: rgba(120, 80, 100, 0.12);
+
+  --hover-bg: rgba(242, 154, 178, 0.15);
+  --input-bg: rgba(255, 255, 255, 0.72);
+
+  --game-card-bg: rgba(255, 241, 245, 0.82);
+  --game-card-hover: rgba(255, 232, 239, 0.95);
+
+  --popup-bg: #fff2f6;
+  --scrollbar-thumb: #e6a9bf;
+}
+    .theme-cyber-neon {
+      --bg-primary: #0a0a1a;
+      --bg-secondary: rgba(10, 10, 26, 0.9);
+      --bg-card: rgba(10, 10, 26, 0.6);
+      --bg-container: rgba(5, 5, 15, 0.5);
+      --text-primary: #b0e0ff;
+      --text-secondary: #70b0d0;
+      --text-accent: #00ffaa;
+      --border-color: rgba(0, 255, 170, 0.08);
+      --shadow-color: rgba(0, 0, 0, 0.5);
+      --hover-bg: rgba(0, 255, 170, 0.1);
+      --input-bg: rgba(5, 5, 15, 0.6);
+      --game-card-bg: rgba(10, 10, 26, 0.6);
+      --game-card-hover: rgba(10, 10, 26, 0.85);
+      --popup-bg: #0f0f1f;
+      --scrollbar-thumb: #1a5a4a;
+    }
+    .theme-royal-crimson {
+      --bg-primary: #1a0a0a;
+      --bg-secondary: rgba(26, 10, 10, 0.9);
+      --bg-card: rgba(26, 10, 10, 0.6);
+      --bg-container: rgba(15, 5, 5, 0.5);
+      --text-primary: #f5d0d0;
+      --text-secondary: #d49a9a;
+      --text-accent: #e05050;
+      --border-color: rgba(255, 80, 80, 0.08);
+      --shadow-color: rgba(0, 0, 0, 0.5);
+      --hover-bg: rgba(255, 80, 80, 0.1);
+      --input-bg: rgba(15, 5, 5, 0.6);
+      --game-card-bg: rgba(26, 10, 10, 0.6);
+      --game-card-hover: rgba(26, 10, 10, 0.85);
+      --popup-bg: #221010;
+      --scrollbar-thumb: #5a2a2a;
+    }
+    .theme-galaxy {
+      --bg-primary: #0a0518;
+      --bg-secondary: rgba(10, 5, 24, 0.9);
+      --bg-card: rgba(10, 5, 24, 0.6);
+      --bg-container: rgba(5, 2, 12, 0.5);
+      --text-primary: #d4c8f0;
+      --text-secondary: #9a8ab8;
+      --text-accent: #7a5ad0;
+      --border-color: rgba(120, 90, 200, 0.08);
+      --shadow-color: rgba(0, 0, 0, 0.5);
+      --hover-bg: rgba(120, 90, 200, 0.1);
+      --input-bg: rgba(5, 2, 12, 0.6);
+      --game-card-bg: rgba(10, 5, 24, 0.6);
+      --game-card-hover: rgba(10, 5, 24, 0.85);
+      --popup-bg: #120a20;
+      --scrollbar-thumb: #4a2a7a;
+    }

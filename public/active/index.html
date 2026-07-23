@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Launching...</title>
+</head>
+<body>
+<h1>Fast Engine</h1>
+<form id="uv-form">
+    <input id="uv-search-engine"
+           value="https://search.brave.com/search?q=%s"
+           type="hidden">
+
+    <input id="uv-address"
+           type="text"
+           placeholder="Search Google or type an URL">
+</form>
+
+<script src="uv/uv.bundle.js" defer></script>
+<script src="uv/uv.config.js" defer></script>
+<script src="register-sw.js" defer></script>
+<script src="search.js" defer></script>
+<script src="index.js" defer></script>
+
+<script>
+window.addEventListener("load", () => {
+    const url = localStorage.getItem("launchURL");
+
+    if (!url) return;
+
+    document.getElementById("uv-address").value = url;
+
+    document.getElementById("uv-form").dispatchEvent(
+        new Event("submit", {
+            bubbles: true,
+            cancelable: true
+        })
+    );
+});
+</script>
+
+</body>
+</html>

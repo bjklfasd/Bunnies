@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+
+<style>
+body{
+    margin:0;
+    background:#111;
+    font-family:Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.card{
+    text-align:center;
+}
+
+img{
+    width:200px;
+    height: 200px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+button{
+    padding:14px 40px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    background:#6c4cff;
+    color:#fff;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#7d5fff;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+    <img src="fortnite.png" alt="Game">
+    <br>
+    <button id="play">Play</button>
+</div>
+
+<script>
+document.getElementById("play").onclick = () => {
+    localStorage.setItem(
+        "launchURL",
+        "https://nowgg.fun/apps/aptoide/5874/aptoide.html"
+    );
+
+    // Open the proxy page
+    window.location.href = "/active/";
+};
+</script>
+
+</body>
+</html>

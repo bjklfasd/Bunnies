@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GJCH2QLBGR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GJCH2QLBGR');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bunnies</title>
+<link rel="icon" type="image/x-icon" href="/assets/images/bunnies.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/main.css">
+<meta property="og:title" content="Log in to Schoology">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="google-site-verification" content="6ystVr7sfpd20ctZGukFGunzOJQW7O6kJpXvzAxSEzI">
+<meta name="google-site-verification" content="9tK81P_TYDOlOx_Me0FXzEj_nQnkL9G0kQxRcG4LT7I">
+<meta name="p:domain_verify" content="d76e189f546bfd185bd2a3ec1a7f214c">
+<meta name="description" content="Schoology allows instructors, students and administrators to create a meaningful virtual classroom and extend learning beyond the boundaries of the physical classroom">
+</head>
+<body>
+
+  <div id="particles-js"></div>
+
+  <div class="app-wrapper">
+
+    <nav class="side-nav">
+      <div class="nav-image-icon" id="logoContainer">
+        <img id="navLogo" src="/assets/images/bunnies.png">
+        <span class="logo-placeholder" id="logoPlaceholder" style="display:none;"><i class="fas fa-bolt"></i></span>
+      </div>
+
+      <div class="nav-icons">
+        <button id="navHome" class="active" title="Home"><i class="fas fa-house"></i></button>
+        <button id="navGames" title="Games"><i class="fas fa-gamepad"></i></button>
+        <button id="navAddons" title="Add-ons"><i class="fas fa-puzzle-piece"></i></button>
+      </div>
+
+      <div class="nav-bottom">
+        <button id="navSettings" title="Settings"><i class="fas fa-gear"></i></button>
+        <button id="navAi" title="AI assistant"><i class="fas fa-robot"></i></button>
+      </div>
+    </nav>
+
+    <div class="main-content">
+      <div class="content-card" id="contentCard">
+        <div class="card-header">
+          <h1 id="pageTitle"><i class="fas fa-bunny"></i> Bunnies</h1>
+          <div class="nav-controls">
+            <button id="navBack" title="Back"><i class="fas fa-arrow-left"></i></button>
+            <button id="navForward" title="Forward"><i class="fas fa-arrow-right"></i></button>
+            <button id="navReload" title="Reload"><i class="fas fa-rotate"></i></button>
+            <button id="navFullscreen" title="Fullscreen"><i class="fas fa-expand"></i></button>
+          </div>
+        </div>
+
+        <input type="text" class="games-search-bar" id="gamesSearchBar" placeholder='Search games...'>
+
+        <div class="content-container" id="contentContainer">
+
+          <div class="home-content" id="homeContent">
+            <div class="welcome">
+              <h2><i class="fas fa-bunny"></i> Bunnies</h2>
+              <p id="taglineText"><i class="fas fa-seedling" style="opacity:0.4;"></i> <span id="taglineWord">now better than ever!</span></p>
+              
+              <div class="social-icons">
+                <a href="https://discord.gg/FAH4cZt6kG" id="discordLink" title="Join Discord" target="_blank">
+                  <i class="fab fa-discord"></i>
+                </a>
+                <a href="https://www.effectivecpmnetwork.com/m6f5kffz?key=0ee4bd2935616ab215beace3e13a7403" id="moneyLink" title="Shop" target="_blank">
+                  <i class="fas fa-coins"></i>
+                </a>
+              </div>
+
+              <input type="text" class="home-search-bar" id="homeSearchBar" placeholder='Ask AI about the site... '>
+
+              <div class="ai-response-home" id="aiResponseHome">
+                <span class="ai-label"><i class="fas fa-robot"></i> AI:</span>
+                <span id="aiResponseHomeText">Ask me anything about the site!</span>
+              </div>
+            </div>
+            <div class="recent-section">
+              <h3><i class="fas fa-clock"></i> Recently Played</h3>
+              <div class="recent-grid" id="recentGames">
+              </div>
+            </div>
+          </div>
+
+          <div class="roster-grid" id="gamesRoster" style="display:none;">
+
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <span class="page-indicator" id="pageIndicator"><i class="fas fa-home"></i> Home</span>
+          <span style="opacity:0.3; font-size:0.7rem;">click a game to launch</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="game-iframe-overlay" id="gameIframeOverlay">
+    <div class="game-iframe-container">
+      <button class="game-iframe-close" id="gameIframeClose"><i class="fas fa-times"></i></button>
+      <button class="game-iframe-reload" id="gameIframeReload"><i class="fas fa-rotate"></i></button>
+      <iframe id="gameIframe" src="about:blank"></iframe>
+    </div>
+  </div>
+
+  <div class="popup-overlay" id="addonPopup">
+    <div class="popup-box">
+      <button class="popup-close-x" id="closeAddonPopupX"><i class="fas fa-times"></i></button>
+      <h2><i class="fas fa-puzzle-piece"></i> Extensions</h2>
+      <p>Install and manage helpful tools</p>
+      
+      <div class="extension-item" id="autoClickerExt">
+        <div class="ext-header">
+          <h3><i class="fas fa-mouse-pointer"></i> Auto Clicker</h3>
+          <span id="clickerStatus" style="font-size:0.8rem; opacity:0.6;">Stopped</span>
+        </div>
+        <div class="ext-desc">Automatically clicks at a set interval. Set your own keybind below.</div>
+        <div class="ext-controls">
+          <input type="number" id="clickerInterval" value="100" min="50" max="10000" placeholder="ms">
+          <span style="font-size:0.8rem; opacity:0.6;">ms</span>
+          <button id="toggleClicker"><i class="fas fa-play"></i> Start</button>
+          <button id="clickerTest" class="danger"><i class="fas fa-bolt"></i> Test</button>
+          <div class="keybind-input">
+            <input type="text" id="clickerKeybind" value="F8" maxlength="20" placeholder="Key">
+            <span class="keybind-hint">keybind</span>
+          </div>
+        </div>
+        <div class="ext-status" id="clickerInfo">Click interval: 100ms • Press F8 to toggle</div>
+      </div>
+
+      <div class="extension-item" id="iframeEmbedderExt">
+        <div class="ext-header">
+          <h3><i class="fas fa-window-maximize"></i> Iframe Embedder</h3>
+          <span style="font-size:0.8rem; opacity:0.6;">Embed any site</span>
+        </div>
+        <div class="ext-desc">Embed any website into an iframe overlay. Great for multitasking.</div>
+        <div class="ext-controls">
+          <input type="text" id="embedUrl" placeholder="https://example.com" value="https://example.com">
+          <button id="embedButton"><i class="fas fa-play"></i> Embed</button>
+        </div>
+        <div class="ext-status" id="embedStatus">Enter a URL and click Embed</div>
+      </div>
+
+      <div class="extension-item">
+        <div class="ext-header">
+          <h3><i class="fas fa-image"></i> Custom Logo</h3>
+          <span style="font-size:0.8rem; opacity:0.6;">Change the nav icon</span>
+        </div>
+        <div class="ext-desc">Upload a custom image to replace the logo in the side navigation.</div>
+        <div class="logo-section" style="margin:0; padding:0; background:transparent;">
+          <div class="logo-preview" id="logoPreview">
+            <img id="previewLogo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23231d2f'/%3E%3Ctext x='50' y='68' font-size='60' text-anchor='middle'%3E🐇%3C/text%3E%3C/svg%3E" alt="logo">
+            <span class="placeholder" style="display:none;"><i class="fas fa-bolt"></i></span>
+          </div>
+          <div class="logo-actions">
+            <button class="primary" id="uploadLogoBtn"><i class="fas fa-upload"></i> Upload Logo</button>
+            <button id="resetLogoBtn"><i class="fas fa-undo"></i> Reset</button>
+          </div>
+          <input type="file" id="logoInput" accept="image/*">
+          <div style="font-size:0.8rem; opacity:0.5; margin-top:6px;">Recommended: 50x50 PNG with transparent background</div>
+        </div>
+      </div>
+
+      <div class="extension-item">
+        <div class="ext-header">
+          <h3><i class="fas fa-font"></i> Custom Font</h3>
+          <span style="font-size:0.8rem; opacity:0.6;">Site-wide typeface</span>
+        </div>
+        <div class="ext-desc">Pick the font used across the whole site. Default is Poppins.</div>
+        <div class="ext-controls">
+          <select id="fontSelect">
+            <option value="Poppins">Poppins (default)</option>
+            <option value="Inter">Inter</option>
+            <option value="Roboto">Roboto</option>
+            <option value="Nunito">Nunito</option>
+            <option value="Montserrat">Montserrat</option>
+            <option value="Quicksand">Quicksand</option>
+            <option value="'Comic Neue'">Comic Neue</option>
+            <option value="'Space Grotesk'">Space Grotesk</option>
+          </select>
+          <button id="applyFontBtn"><i class="fas fa-check"></i> Apply</button>
+          <button id="resetFontBtn"><i class="fas fa-undo"></i> Reset</button>
+        </div>
+        <div class="ext-status" id="fontStatus">Current font: Poppins</div>
+      </div>
+
+      <div class="extension-item">
+        <div class="ext-header">
+          <h3><i class="fas fa-paint-brush"></i> Custom Theme</h3>
+          <span style="font-size:0.8rem; opacity:0.6;">Create your own</span>
+        </div>
+        <div class="ext-desc">Design your own theme with custom colors.</div>
+        <div class="custom-theme-section" style="margin:0; padding:0; background:transparent;">
+          <div class="color-row">
+            <label>Background</label>
+            <input type="color" id="customBg" value="#1a1025">
+            <input type="text" id="customBgText" placeholder="#1a1025">
+          </div>
+          <div class="color-row">
+            <label>Primary Text</label>
+            <input type="color" id="customText" value="#e8d5ff">
+            <input type="text" id="customTextText" placeholder="#e8d5ff">
+          </div>
+          <div class="color-row">
+            <label>Accent Color</label>
+            <input type="color" id="customAccent" value="#c89bff">
+            <input type="text" id="customAccentText" placeholder="#c89bff">
+          </div>
+          <div class="color-row">
+            <label>Secondary Text</label>
+            <input type="color" id="customSecondary" value="#b89fd4">
+            <input type="text" id="customSecondaryText" placeholder="#b89fd4">
+          </div>
+          <div class="theme-actions">
+            <button class="primary" id="applyCustomTheme"><i class="fas fa-check"></i> Apply Custom Theme</button>
+            <button id="resetCustomTheme"><i class="fas fa-undo"></i> Reset</button>
+          </div>
+          <div style="font-size:0.8rem; opacity:0.5; margin-top:8px;">Your custom theme will be saved automatically</div>
+        </div>
+      </div>
+
+      <button class="popup-close" id="closeAddonPopup">Close</button>
+    </div>
+  </div>
+
+  <div class="popup-overlay" id="settingsPopup">
+    <div class="popup-box">
+      <button class="popup-close-x" id="closeSettingsPopupX"><i class="fas fa-times"></i></button>
+      <h2><i class="fas fa-gear"></i> Settings</h2>
+      <p>Customize your experience</p>
+      
+      <div class="theme-selector">
+        <label><i class="fas fa-palette"></i> Select Theme</label>
+        <select id="themeSelect">
+          <option value="default">Default (Original)</option>
+          <option value="midnight-purple">Midnight</option>
+          <option value="arctic-freeze">Arctic</option>
+          <option value="forest-night">Forest</option>
+          <option value="cherry-blossom">Sakura</option>
+          <option value="cyber-neon">Hack-in</option>
+          <option value="royal-crimson">Crimson</option>
+          <option value="galaxy">Galaxy</option>
+          <option value="custom">Custom</option>
+        </select>
+      </div>
+
+      <div class="cloak-section">
+        <h3 style="font-size:1rem; margin-bottom:10px; color:var(--text-secondary);">
+          <i class="fas fa-mask"></i> Tab Cloaking
+        </h3>
+        <label>Favicon Preset</label>
+        <select id="faviconPreset">
+          <option value="">Custom URL</option>
+          <option value="/assets/images/icons/bing.ico">Bing</option>
+          <option value="/assets/images/icons/chromenewtab.ico">Chrome New Tab</option>
+          <option value="/assets/images/icons/desmos.ico">Desmos</option>
+          <option value="/assets/images/icons/gmail.ico">Gmail</option>
+          <option value="/assets/images/icons/google.ico">Google</option>
+          <option value="/assets/images/icons/googleclassroom.ico">Google Classroom</option>
+          <option value="/assets/images/icons/googledrive.ico">Google Drive</option>
+          <option value="/assets/images/icons/wikipedia.ico">Wikipedia</option>
+        </select>
+        
+        <label style="margin-top:10px;">Custom Favicon URL</label>
+        <input type="text" id="faviconInput" placeholder="https://example.com/favicon.ico">
+        
+        <label style="margin-top:10px;">Tab Title</label>
+        <input type="text" id="titleInput" placeholder="My Awesome Tab">
+        
+        <div class="cloak-actions">
+          <button id="applyCloak"><i class="fas fa-check"></i> Apply</button>
+          <button id="resetCloak"><i class="fas fa-undo"></i> Reset to Default</button>
+        </div>
+      </div>
+
+      <button class="popup-close" id="closeSettingsPopup">Close</button>
+    </div>
+  </div>
+
+  <div class="popup-overlay" id="aiPopup">
+    <div class="popup-box">
+      <button class="popup-close-x" id="closeAiPopupX"><i class="fas fa-times"></i></button>
+      <h2><i class="fas fa-robot"></i> AI Assistant</h2>
+      <p>Ask me anything about the site, or use the preset questions below.</p>
+      
+      <div class="ai-presets">
+        <button data-question="Where can I find custom themes?"><i class="fas fa-palette"></i> Custom Themes</button>
+        <button data-question="How do I change the logo?"><i class="fas fa-image"></i> Change Logo</button>
+        <button data-question="Where are the settings?"><i class="fas fa-gear"></i> Settings</button>
+        <button data-question="How do I use the auto clicker?"><i class="fas fa-mouse-pointer"></i> Auto Clicker</button>
+        <button data-question="How do I embed a website?"><i class="fas fa-window-maximize"></i> Embed Website</button>
+        <button data-question="What games can I play?"><i class="fas fa-gamepad"></i> Games</button>
+        <button data-question="How do I change the theme?"><i class="fas fa-paint-brush"></i> Change Theme</button>
+      </div>
+      
+      <div style="background:var(--input-bg); border-radius:60px; padding:6px 16px; margin:16px 0; display:flex; border:1px solid var(--border-color);">
+        <input type="text" id="aiInput" placeholder="Ask me anything..." style="flex:1; background:transparent; border:none; color:var(--text-primary); padding:12px 6px; outline:none; font-size:1rem;">
+        <button id="aiSendBtn" style="background:var(--scrollbar-thumb); border:none; color:white; border-radius:60px; padding:8px 24px; cursor:pointer;"><i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div id="aiResponse" style="background:var(--input-bg); border-radius:24px; padding:16px; min-height:80px; max-height:220px; overflow-y:auto; margin:10px 0; font-size:0.95rem; border:1px solid var(--border-color); line-height:1.6;"><i class="fas fa-robot" style="color:var(--text-accent); margin-right:8px;"></i> Hello! I'm your AI assistant. Ask me anything about the site or click a preset question above.</div>
+      <button class="popup-close" id="closeAiPopup">Close</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="/assets/js/app.js"></script>\
+  <script src="https://pl30404457.effectivecpmnetwork.com/4b/d2/e0/4bd2e0433588e2fb9d8c999fbd936f74.js"></script>
+  <script src="https://pl30404458.effectivecpmnetwork.com/e6/3a/4f/e63a4fd321c6583dd16a9578d731ae66.js"></script>
+</body>
+</html>
