@@ -1,24 +1,26 @@
 const express = require("express");
+const path = require("path");
 const { createBareServer } = require("@tomphttp/bare-server-node");
 
 const app = express();
 
-const bare = createBareServer("/bare/");
+const bare = createBareServer("/carrot/");
 
 app.use((req, res, next) => {
   if (bare.shouldRoute(req)) {
     return bare.routeRequest(req, res);
   }
-
   next();
 });
 
-app.get("/", (req, res) => {
-  res.send("Bare server is running!");
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 const server = app.listen(process.env.PORT || 3000, () => {
-  console.log("Bare server running");
+  console.log("Bunnies running");
 });
 
 server.on("upgrade", (req, socket, head) => {
