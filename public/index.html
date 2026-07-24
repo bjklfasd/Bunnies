@@ -254,53 +254,25 @@
     </button>
 </form>
 
-<div id="overlay" hidden>
-    <button id="closeOverlay">✕</button>
+<div class="game-iframe-overlay" id="gameOverlay">
+    <div class="game-iframe-container">
+        <button class="game-iframe-reload" id="reloadFrame">
+            <i class="fas fa-rotate-right"></i>
+        </button>
 
-    <iframe
-        id="uv-frame"
-        allowfullscreen
-        referrerpolicy="no-referrer">
-    </iframe>
+        <button class="game-iframe-close" id="closeFrame">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <iframe id="gameFrame" allowfullscreen></iframe>
+    </div>
 </div>
-
-<style>
-#overlay {
-    position: fixed;
-    inset: 0;
-    background: #000;
-    z-index: 999999;
-}
-
-#overlay[hidden] {
-    display: none;
-}
-
-#uv-frame {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-#closeOverlay {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 42px;
-    height: 42px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    z-index: 1000000;
-}
-</style>
 
 <script>
 const form = document.getElementById("uv-form");
 const input = document.getElementById("uv-address");
-const overlay = document.getElementById("overlay");
-const frame = document.getElementById("uv-frame");
-const closeBtn = document.getElementById("closeOverlay");
+const overlay = document.getElementById("gameOverlay");
+const frame = document.getElementById("gameFrame");
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -313,14 +285,17 @@ form.addEventListener("submit", async (e) => {
     );
 
     frame.src = __uv$config.prefix + __uv$config.encodeUrl(url);
-
-    overlay.hidden = false;
+    overlay.classList.add("active");
 });
 
-closeBtn.addEventListener("click", () => {
-    overlay.hidden = true;
+document.getElementById("closeFrame").onclick = () => {
+    overlay.classList.remove("active");
     frame.src = "about:blank";
-});
+};
+
+document.getElementById("reloadFrame").onclick = () => {
+    frame.contentWindow.location.reload();
+};
 </script>
         </div>
       </div>
