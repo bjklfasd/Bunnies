@@ -229,6 +229,39 @@
         </div>
       </div>
 
+      <div class="extension-item" id="iframeEmbedderExt">
+        <div class="ext-header">
+          <h3><i class="fas fa-window-maximize"></i> Search Engine</h3>
+          <span style="font-size:0.8rem; opacity:0.6;">Search the web within the site</span>
+        </div>
+        <div class="ext-desc">Search any website directly from within the site using the embedded search engine.</div>
+        <div class="ext-controls">
+
+<form id="uv-form">
+    <input
+        id="uv-search-engine"
+        value="https://search.brave.com/search?q=%s"
+        type="hidden">
+
+    <input
+        id="uv-address"
+        type="text"
+        placeholder="Search Brave or type a URL"
+        autocomplete="off">
+
+    <button type="submit" id="searchButton">
+        <i class="fas fa-search"></i> Search
+    </button>
+</form>
+
+<script src="/active/uv/uv.bundle.js" defer></script>
+<script src="/active/uv/uv.config.js" defer></script>
+<script src="/active/register-sw.js" defer></script>
+<script src="/active/search.js" defer></script>
+<script src="/active/index.js" defer></script>
+        </div>
+      </div>
+
       <button class="popup-close" id="closeAddonPopup">Close</button>
     </div>
   </div>
@@ -281,19 +314,6 @@
           <button id="applyCloak"><i class="fas fa-check"></i> Apply</button>
           <button id="resetCloak"><i class="fas fa-undo"></i> Reset to Default</button>
         </div>
-      </div>
-
-      <div class="extension-item" id="iframeEmbedderExt">
-        <div class="ext-header">
-          <h3><i class="fas fa-window-maximize"></i> Iframe Embedder</h3>
-          <span style="font-size:0.8rem; opacity:0.6;">Embed any site</span>
-        </div>
-        <div class="ext-desc">Embed any website into an iframe overlay. Great for multitasking.</div>
-        <div class="ext-controls">
-          <input type="text" id="embedUrl" placeholder="https://example.com" value="https://example.com">
-          <button id="embedButton"><i class="fas fa-play"></i> Embed</button>
-        </div>
-        <div class="ext-status" id="embedStatus">Enter a URL and click Embed</div>
       </div>
 
       <button class="popup-close" id="closeSettingsPopup">Close</button>
