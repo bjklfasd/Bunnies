@@ -6,7 +6,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-GJCH2QLBGR');
 </script>
 <meta charset="UTF-8">
@@ -38,6 +37,7 @@
 
       <div class="nav-icons">
         <button id="navHome" class="active" title="Home"><i class="fas fa-house"></i></button>
+        <button id="navApps" title="Apps"><i class="fas fa-th-large"></i></button>
         <button id="navGames" title="Games"><i class="fas fa-gamepad"></i></button>
         <button id="navAddons" title="Add-ons"><i class="fas fa-puzzle-piece"></i></button>
       </div>
@@ -60,7 +60,7 @@
           </div>
         </div>
 
-        <input type="text" class="games-search-bar" id="gamesSearchBar" placeholder='Search games...'>
+        <input type="text" class="shared-search-bar" id="sharedSearchBar" placeholder='Search...'>
 
         <div class="content-container" id="contentContainer">
 
@@ -86,20 +86,26 @@
               </div>
             </div>
             <div class="recent-section">
+              <h3><i class="fas fa-heart"></i> Favorites</h3>
+              <div class="recent-grid" id="favoritesGrid"></div>
+            </div>
+            <div class="recent-section" style="margin-top:14px;">
               <h3><i class="fas fa-clock"></i> Recently Played</h3>
-              <div class="recent-grid" id="recentGames">
-              </div>
+              <div class="recent-grid" id="recentGames"></div>
+            </div>
+            <div class="recent-section" style="margin-top:14px;">
+              <h3><i class="fas fa-clock"></i> Recently Used</h3>
+              <div class="recent-grid" id="recentApps"></div>
             </div>
           </div>
 
-          <div class="roster-grid" id="gamesRoster" style="display:none;">
-
-          </div>
+          <div class="roster-grid" id="gamesRoster" style="display:none;"></div>
+          <div class="roster-grid" id="appsRoster" style="display:none;"></div>
         </div>
 
         <div class="card-footer">
           <span class="page-indicator" id="pageIndicator"><i class="fas fa-home"></i> Home</span>
-          <span style="opacity:0.3; font-size:0.7rem;">click a game to launch</span>
+          <span style="opacity:0.3; font-size:0.7rem;">click to launch</span>
         </div>
       </div>
     </div>
@@ -109,7 +115,8 @@
     <div class="game-iframe-container">
       <button class="game-iframe-close" id="gameIframeClose"><i class="fas fa-times"></i></button>
       <button class="game-iframe-reload" id="gameIframeReload"><i class="fas fa-rotate"></i></button>
-      <iframe id="gameIframe" src="about:blank"></iframe>
+      <button class="game-iframe-fullscreen" id="gameIframeFullscreen"><i class="fas fa-expand"></i></button>
+      <iframe id="gameIframe" src="about:blank" allowfullscreen></iframe>
     </div>
   </div>
 
@@ -229,46 +236,17 @@
         </div>
       </div>
 
-      <div class="extension-item" id="iframeEmbedderExt">
+      <div class="extension-item">
         <div class="ext-header">
-          <h3><i class="fa-solid fa-magnifying-glass"></i> Search Engine</h3>
-          <span style="font-size:0.8rem; opacity:0.6;">Search the web within the site</span>
+          <h3><i class="fa-solid fa-globe"></i> Browser</h3>
+          <span style="font-size:0.8rem; opacity:0.6;">Tabs, nav, proxy</span>
         </div>
-        <div class="ext-desc">Search any website directly from within the site using the embedded search engine.</div>
+        <div class="ext-desc">Browse the web with a full tabbed browser experience.</div>
         <div class="ext-controls">
-
-        <form id="uv-form">
-    <input
-        id="uv-search-engine"
-        value="https://search.brave.com/search?q=%s"
-        type="hidden">
-
-    <input
-        id="uv-address"
-        type="text"
-        placeholder="Search Brave or type a URL"
-        autocomplete="off">
-
-    <button type="submit" id="searchButton">
-        <i class="fas fa-search"></i> Search
-    </button>
-</form>
-
-<div class="game-iframe-overlay" id="gameOverlay">
-    <div class="game-iframe-container">
-        <button class="game-iframe-reload" id="reloadFrame">
-            <i class="fas fa-rotate-right"></i>
-        </button>
-
-        <button class="game-iframe-close" id="closeFrame">
-            <i class="fas fa-times"></i>
-        </button>
-
-        <iframe id="gameFrame" allowfullscreen></iframe>
-    </div>
-</div>
+          <input type="text" id="browserUrlInput" placeholder="Search or type URL..." autocomplete="off">
+          <button id="browserLaunchBtn"><i class="fas fa-arrow-right"></i> Go</button>
         </div>
-        <div class="ext-status" id="embedStatus">Enter a URL and click Search</div>
+        <div class="ext-status" id="browserStatus">Enter a URL or search term to begin</div>
       </div>
 
       <button class="popup-close" id="closeAddonPopup">Close</button>
@@ -300,20 +278,20 @@
         <h3 style="font-size:1rem; margin-bottom:10px; color:var(--text-secondary);">
           <i class="fas fa-mask"></i> Tab Cloaking
         </h3>
-        <label>Favicon Preset</label>
+        <label>Cloak Preset</label>
         <select id="faviconPreset">
-          <option value="">Custom URL</option>
-          <option value="/assets/images/icons/bing.ico">Bing</option>
-          <option value="/assets/images/icons/chromenewtab.ico">Chrome New Tab</option>
-          <option value="/assets/images/icons/desmos.ico">Desmos</option>
-          <option value="/assets/images/icons/gmail.ico">Gmail</option>
-          <option value="/assets/images/icons/google.ico">Google</option>
-          <option value="/assets/images/icons/googleclassroom.ico">Google Classroom</option>
-          <option value="/assets/images/icons/googledrive.ico">Google Drive</option>
-          <option value="/assets/images/icons/wikipedia.ico">Wikipedia</option>
+          <option value="">— Custom —</option>
+          <option value="/assets/images/icons/bing.ico" data-title="Bing">Bing</option>
+          <option value="/assets/images/icons/chromenewtab.ico" data-title="New Tab">Chrome New Tab</option>
+          <option value="/assets/images/icons/desmos.ico" data-title="Desmos">Desmos</option>
+          <option value="/assets/images/icons/gmail.ico" data-title="Gmail">Gmail</option>
+          <option value="/assets/images/icons/google.ico" data-title="Google">Google</option>
+          <option value="/assets/images/icons/googleclassroom.ico" data-title="Classroom">Google Classroom</option>
+          <option value="/assets/images/icons/googledrive.ico" data-title="My Drive">Google Drive</option>
+          <option value="/assets/images/icons/wikipedia.ico" data-title="Wikipedia">Wikipedia</option>
         </select>
         
-        <label style="margin-top:10px;">Custom Favicon URL</label>
+        <label style="margin-top:10px;">Favicon URL</label>
         <input type="text" id="faviconInput" placeholder="https://example.com/favicon.ico">
         
         <label style="margin-top:10px;">Tab Title</label>
@@ -322,6 +300,46 @@
         <div class="cloak-actions">
           <button id="applyCloak"><i class="fas fa-check"></i> Apply</button>
           <button id="resetCloak"><i class="fas fa-undo"></i> Reset to Default</button>
+        </div>
+      </div>
+
+      <div class="cloak-section">
+        <h3 style="font-size:1rem; margin-bottom:10px; color:var(--text-secondary);">
+          <i class="fas fa-eye-off"></i> Auto Cloak (tab switch)
+        </h3>
+        <label>Auto Cloak Preset</label>
+        <select id="autoCloakPreset">
+          <option value="">— Custom —</option>
+          <option value="/assets/images/icons/bing.ico" data-title="Bing">Bing</option>
+          <option value="/assets/images/icons/chromenewtab.ico" data-title="New Tab">Chrome New Tab</option>
+          <option value="/assets/images/icons/desmos.ico" data-title="Desmos">Desmos</option>
+          <option value="/assets/images/icons/gmail.ico" data-title="Gmail">Gmail</option>
+          <option value="/assets/images/icons/google.ico" data-title="Google">Google</option>
+          <option value="/assets/images/icons/googleclassroom.ico" data-title="Classroom">Google Classroom</option>
+          <option value="/assets/images/icons/googledrive.ico" data-title="My Drive">Google Drive</option>
+          <option value="/assets/images/icons/wikipedia.ico" data-title="Wikipedia">Wikipedia</option>
+        </select>
+        
+        <label style="margin-top:10px;">Favicon URL</label>
+        <input type="text" id="autoCloakFaviconInput" placeholder="https://example.com/favicon.ico">
+        
+        <label style="margin-top:10px;">Tab Title</label>
+        <input type="text" id="autoCloakTitleInput" placeholder="Classroom">
+        
+        <div class="cloak-actions">
+          <button id="applyAutoCloak"><i class="fas fa-check"></i> Apply</button>
+          <button id="resetAutoCloak"><i class="fas fa-undo"></i> Reset</button>
+        </div>
+      </div>
+
+      <div class="cloak-section">
+        <h3 style="font-size:1rem; margin-bottom:10px; color:var(--text-secondary);">
+          <i class="fas fa-link"></i> URL Cloaking
+        </h3>
+        <p style="font-size:0.8rem; opacity:0.6; margin-bottom:10px;">Launch the site under a different URL to hide what site you're on.</p>
+        <div class="cloak-actions" style="justify-content:center;">
+          <button id="launchAboutBlank" style="flex:1;"><i class="fas fa-window-restore"></i> about:blank</button>
+          <button id="launchBlob" style="flex:1;"><i class="fas fa-file"></i> blob:null</button>
         </div>
       </div>
 
@@ -342,6 +360,7 @@
         <button data-question="How do I use the auto clicker?"><i class="fas fa-mouse-pointer"></i> Auto Clicker</button>
         <button data-question="How do I embed a website?"><i class="fas fa-window-maximize"></i> Embed Website</button>
         <button data-question="What games can I play?"><i class="fas fa-gamepad"></i> Games</button>
+        <button data-question="What apps are available?"><i class="fas fa-th-large"></i> Apps</button>
         <button data-question="How do I change the theme?"><i class="fas fa-paint-brush"></i> Change Theme</button>
       </div>
       
@@ -354,44 +373,35 @@
     </div>
   </div>
 
+  <!-- Browser overlay -->
+  <div class="browser-overlay" id="browserOverlay">
+    <div class="browser-window">
+      <div class="browser-toolbar">
+        <div class="browser-tabs" id="browserTabs"></div>
+        <button class="browser-toolbar-btn" id="browserTabAdd" title="New tab"><i class="fas fa-plus"></i></button>
+        <button class="browser-toolbar-btn browser-toolbar-close" id="browserClose" title="Close browser"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="browser-nav">
+        <button class="browser-nav-btn" id="browserBack" title="Back"><i class="fas fa-arrow-left"></i></button>
+        <button class="browser-nav-btn" id="browserForward" title="Forward"><i class="fas fa-arrow-right"></i></button>
+        <button class="browser-nav-btn" id="browserReload" title="Reload"><i class="fas fa-rotate"></i></button>
+        <div class="browser-url-wrap">
+          <input type="text" class="browser-url" id="browserUrl" placeholder="Enter URL..." autocomplete="off" spellcheck="false">
+        </div>
+      </div>
+      <div class="browser-content" id="browserContent"></div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script src="/assets/js/app.js"></script>
-  <script src="/assets/js/math.js"></script>
+  <script src="/assets/js/app-data.js"></script>
+  <script src="/assets/js/app-ai.js"></script>
+  <script src="/assets/js/app-core.js"></script>
   <script src="/active/uv/uv.bundle.js" defer></script>
   <script src="/active/uv/uv.config.js" defer></script>
   <script src="/active/register-sw.js" defer></script>
   <script src="/active/search.js" defer></script>
-  <script src="/active/index.js" defer></script>
-  <script src="/active/frame.js" defer></script>
-  <script>
-      const form = document.getElementById("uv-form");
-      const input = document.getElementById("uv-address");
-      const overlay = document.getElementById("gameOverlay");
-      const frame = document.getElementById("gameFrame");
 
-      form.addEventListener("submit", async (e) => {
-          e.preventDefault();
-
-          await registerSW();
-
-          const url = search(
-              input.value,
-              document.getElementById("uv-search-engine").value
-          );
-
-          frame.src = __uv$config.prefix + __uv$config.encodeUrl(url);
-          overlay.classList.add("active");
-      });
-
-      document.getElementById("closeFrame").onclick = () => {
-          overlay.classList.remove("active");
-          frame.src = "about:blank";
-      };
-
-      document.getElementById("reloadFrame").onclick = () => {
-          frame.contentWindow.location.reload();
-      };
-  </script>
   <script src="https://pl30404457.effectivecpmnetwork.com/4b/d2/e0/4bd2e0433588e2fb9d8c999fbd936f74.js"></script>
   <script src="https://pl30404458.effectivecpmnetwork.com/e6/3a/4f/e63a4fd321c6583dd16a9578d731ae66.js"></script>
 </body>

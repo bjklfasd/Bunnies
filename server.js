@@ -40,9 +40,9 @@ app.use(
   })
 );
 
-// Fallback to homepage
+// 404 page
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.status(404).sendFile(path.join(__dirname, "public", "404.html"));
 });
 
 const server = app.listen(process.env.PORT || 3000, () => {
