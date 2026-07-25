@@ -59,40 +59,102 @@
     if (saved) customThemeData = JSON.parse(saved);
   } catch {}
 
+  var themeData = {
+    'default': {
+      '--bg-primary': '#231d2f', '--bg-secondary': 'rgba(35,29,47,0.85)', '--bg-card': 'rgba(35,29,47,0.55)', '--bg-container': 'rgba(20,16,30,0.4)',
+      '--text-primary': '#ffffff', '--text-secondary': '#b7a0c9', '--text-accent': '#d9b3ff',
+      '--border-color': 'rgba(255,255,255,0.04)', '--shadow-color': 'rgba(0,0,0,0.5)', '--hover-bg': 'rgba(255,255,255,0.08)',
+      '--input-bg': 'rgba(20,16,30,0.6)', '--game-card-bg': 'rgba(35,29,47,0.6)', '--game-card-hover': 'rgba(35,29,47,0.85)',
+      '--popup-bg': '#2a2238', '--scrollbar-thumb': '#3d2b4f'
+    },
+    'midnight-purple': {
+      '--bg-primary': '#1a1025', '--bg-secondary': 'rgba(26,16,37,0.9)', '--bg-card': 'rgba(26,16,37,0.6)', '--bg-container': 'rgba(10,6,18,0.5)',
+      '--text-primary': '#e8d5ff', '--text-secondary': '#b89fd4', '--text-accent': '#c89bff',
+      '--border-color': 'rgba(180,130,255,0.08)', '--shadow-color': 'rgba(0,0,0,0.5)', '--hover-bg': 'rgba(180,130,255,0.1)',
+      '--input-bg': 'rgba(10,6,18,0.6)', '--game-card-bg': 'rgba(26,16,37,0.6)', '--game-card-hover': 'rgba(26,16,37,0.85)',
+      '--popup-bg': '#1f1330', '--scrollbar-thumb': '#5a3d7a'
+    },
+    'arctic-freeze': {
+      '--bg-primary': '#dceefd', '--bg-secondary': 'rgba(220,238,253,0.92)', '--bg-card': 'rgba(255,255,255,0.65)', '--bg-container': 'rgba(245,250,255,0.75)',
+      '--text-primary': '#2d4f6b', '--text-secondary': '#5f87a8', '--text-accent': '#6aaed6',
+      '--border-color': 'rgba(106,174,214,0.18)', '--shadow-color': 'rgba(50,90,130,0.12)', '--hover-bg': 'rgba(106,174,214,0.15)',
+      '--input-bg': 'rgba(255,255,255,0.7)', '--game-card-bg': 'rgba(240,247,255,0.8)', '--game-card-hover': 'rgba(230,242,255,0.95)',
+      '--popup-bg': '#eaf5ff', '--scrollbar-thumb': '#8abfdf'
+    },
+    'forest-night': {
+      '--bg-primary': '#0d1a0f', '--bg-secondary': 'rgba(13,26,15,0.9)', '--bg-card': 'rgba(13,26,15,0.6)', '--bg-container': 'rgba(8,18,10,0.5)',
+      '--text-primary': '#b8d4b8', '--text-secondary': '#7fa37f', '--text-accent': '#5fb85f',
+      '--border-color': 'rgba(80,200,80,0.08)', '--shadow-color': 'rgba(0,0,0,0.5)', '--hover-bg': 'rgba(80,200,80,0.1)',
+      '--input-bg': 'rgba(8,18,10,0.6)', '--game-card-bg': 'rgba(13,26,15,0.6)', '--game-card-hover': 'rgba(13,26,15,0.85)',
+      '--popup-bg': '#102012', '--scrollbar-thumb': '#2a5a2a'
+    },
+    'cherry-blossom': {
+      '--bg-primary': '#fbeaf0', '--bg-secondary': 'rgba(251,234,240,0.92)', '--bg-card': 'rgba(255,255,255,0.68)', '--bg-container': 'rgba(255,247,250,0.75)',
+      '--text-primary': '#6d4b5b', '--text-secondary': '#9c7486', '--text-accent': '#f29ab2',
+      '--border-color': 'rgba(242,154,178,0.18)', '--shadow-color': 'rgba(120,80,100,0.12)', '--hover-bg': 'rgba(242,154,178,0.15)',
+      '--input-bg': 'rgba(255,255,255,0.72)', '--game-card-bg': 'rgba(255,241,245,0.82)', '--game-card-hover': 'rgba(255,232,239,0.95)',
+      '--popup-bg': '#fff2f6', '--scrollbar-thumb': '#e6a9bf'
+    },
+    'cyber-neon': {
+      '--bg-primary': '#0a0a1a', '--bg-secondary': 'rgba(10,10,26,0.9)', '--bg-card': 'rgba(10,10,26,0.6)', '--bg-container': 'rgba(5,5,15,0.5)',
+      '--text-primary': '#b0e0ff', '--text-secondary': '#70b0d0', '--text-accent': '#00ffaa',
+      '--border-color': 'rgba(0,255,170,0.08)', '--shadow-color': 'rgba(0,0,0,0.5)', '--hover-bg': 'rgba(0,255,170,0.1)',
+      '--input-bg': 'rgba(5,5,15,0.6)', '--game-card-bg': 'rgba(10,10,26,0.6)', '--game-card-hover': 'rgba(10,10,26,0.85)',
+      '--popup-bg': '#0f0f1f', '--scrollbar-thumb': '#1a5a4a'
+    },
+    'royal-crimson': {
+      '--bg-primary': '#1a0a0a', '--bg-secondary': 'rgba(26,10,10,0.9)', '--bg-card': 'rgba(26,10,10,0.6)', '--bg-container': 'rgba(15,5,5,0.5)',
+      '--text-primary': '#f5d0d0', '--text-secondary': '#d49a9a', '--text-accent': '#e05050',
+      '--border-color': 'rgba(255,80,80,0.08)', '--shadow-color': 'rgba(0,0,0,0.5)', '--hover-bg': 'rgba(255,80,80,0.1)',
+      '--input-bg': 'rgba(15,5,5,0.6)', '--game-card-bg': 'rgba(26,10,10,0.6)', '--game-card-hover': 'rgba(26,10,10,0.85)',
+      '--popup-bg': '#221010', '--scrollbar-thumb': '#5a2a2a'
+    },
+    'galaxy': {
+      '--bg-primary': '#0a0518', '--bg-secondary': 'rgba(10,5,24,0.9)', '--bg-card': 'rgba(10,5,24,0.6)', '--bg-container': 'rgba(5,2,12,0.5)',
+      '--text-primary': '#d4c8f0', '--text-secondary': '#9a8ab8', '--text-accent': '#7a5ad0',
+      '--border-color': 'rgba(120,90,200,0.08)', '--shadow-color': 'rgba(0,0,0,0.5)', '--hover-bg': 'rgba(120,90,200,0.1)',
+      '--input-bg': 'rgba(5,2,12,0.6)', '--game-card-bg': 'rgba(10,5,24,0.6)', '--game-card-hover': 'rgba(10,5,24,0.85)',
+      '--popup-bg': '#120a20', '--scrollbar-thumb': '#4a2a7a'
+    }
+  };
+
   function applyTheme(themeId) {
     document.documentElement.className = '';
+    document.documentElement.style.cssText = '';
     if (themeId === 'custom' && customThemeData) {
-      const root = document.documentElement;
-      root.style.setProperty('--bg-primary', customThemeData.bg || '#1a1025');
-      root.style.setProperty('--text-primary', customThemeData.text || '#e8d5ff');
-      root.style.setProperty('--text-accent', customThemeData.accent || '#c89bff');
-      root.style.setProperty('--text-secondary', customThemeData.secondary || '#b89fd4');
-      root.style.setProperty('--bg-secondary', 'rgba(26, 16, 37, 0.9)');
-      root.style.setProperty('--bg-card', 'rgba(26, 16, 37, 0.6)');
-      root.style.setProperty('--bg-container', 'rgba(10, 6, 18, 0.5)');
-      root.style.setProperty('--border-color', 'rgba(180, 130, 255, 0.08)');
-      root.style.setProperty('--shadow-color', 'rgba(0, 0, 0, 0.5)');
-      root.style.setProperty('--hover-bg', 'rgba(180, 130, 255, 0.1)');
-      root.style.setProperty('--input-bg', 'rgba(10, 6, 18, 0.6)');
-      root.style.setProperty('--game-card-bg', 'rgba(26, 16, 37, 0.6)');
-      root.style.setProperty('--game-card-hover', 'rgba(26, 16, 37, 0.85)');
-      root.style.setProperty('--popup-bg', '#1f1330');
-      root.style.setProperty('--scrollbar-thumb', '#5a3d7a');
+      var vars = themeData['midnight-purple'];
+      var root = document.documentElement;
+      root.style.setProperty('--bg-primary', customThemeData.bg || vars['--bg-primary']);
+      root.style.setProperty('--text-primary', customThemeData.text || vars['--text-primary']);
+      root.style.setProperty('--text-accent', customThemeData.accent || vars['--text-accent']);
+      root.style.setProperty('--text-secondary', customThemeData.secondary || vars['--text-secondary']);
+      root.style.setProperty('--bg-secondary', vars['--bg-secondary']);
+      root.style.setProperty('--bg-card', vars['--bg-card']);
+      root.style.setProperty('--bg-container', vars['--bg-container']);
+      root.style.setProperty('--border-color', vars['--border-color']);
+      root.style.setProperty('--shadow-color', vars['--shadow-color']);
+      root.style.setProperty('--hover-bg', vars['--hover-bg']);
+      root.style.setProperty('--input-bg', vars['--input-bg']);
+      root.style.setProperty('--game-card-bg', vars['--game-card-bg']);
+      root.style.setProperty('--game-card-hover', vars['--game-card-hover']);
+      root.style.setProperty('--popup-bg', vars['--popup-bg']);
+      root.style.setProperty('--scrollbar-thumb', vars['--scrollbar-thumb']);
       localStorage.setItem('selectedTheme', 'custom');
       currentTheme = 'custom';
-    } else if (themeId !== 'default' && themeId !== 'custom') {
+    } else if (themeData[themeId]) {
       document.documentElement.classList.add('theme-' + themeId);
-      document.documentElement.style.cssText = '';
+      var root = document.documentElement;
+      var vars = themeData[themeId];
+      for (var key in vars) root.style.setProperty(key, vars[key]);
       localStorage.setItem('selectedTheme', themeId);
       currentTheme = themeId;
-    } else if (themeId === 'default') {
-      document.documentElement.style.cssText = '';
+    } else {
       localStorage.setItem('selectedTheme', 'default');
       currentTheme = 'default';
     }
     applyFont(currentFont);
-    const select = document.getElementById('themeSelect');
-    if (select) select.value = themeId;
+    var select = document.getElementById('themeSelect');
+    if (select) select.value = currentTheme;
   }
 
   ['customBg', 'customText', 'customAccent', 'customSecondary'].forEach(id => {
@@ -194,10 +256,35 @@
   const savedTitle = localStorage.getItem('cloakTitle');
   if (savedFavicon || savedTitle) applyCloak(savedFavicon, savedTitle);
 
+  var cloakMode = 'tab';
+  function getCloakKeys() {
+    return cloakMode === 'auto' ? ['autoCloakFavicon', 'autoCloakTitle'] : ['cloakFavicon', 'cloakTitle'];
+  }
+  function loadCloakInputs() {
+    var k = getCloakKeys();
+    document.getElementById('faviconInput').value = localStorage.getItem(k[0]) || '';
+    document.getElementById('titleInput').value = localStorage.getItem(k[1]) || '';
+  }
+  document.getElementById('cloakModeToggle').addEventListener('change', function() {
+    var k = getCloakKeys();
+    var fav = document.getElementById('faviconInput').value.trim();
+    var tit = document.getElementById('titleInput').value.trim();
+    if (fav) localStorage.setItem(k[0], fav); else localStorage.removeItem(k[0]);
+    if (tit) localStorage.setItem(k[1], tit); else localStorage.removeItem(k[1]);
+    cloakMode = this.checked ? 'auto' : 'tab';
+    document.getElementById('cloakModeLabel').style.opacity = cloakMode === 'tab' ? '1' : '0.5';
+    document.getElementById('cloakModeLabelAuto').style.opacity = cloakMode === 'auto' ? '1' : '0.5';
+    loadCloakInputs();
+    var p = document.getElementById('faviconPreset');
+    var val = localStorage.getItem(getCloakKeys()[0]);
+    if (val) { p.value = val; }
+    else { p.value = ''; }
+  });
+
   document.getElementById('faviconPreset').addEventListener('change', function() {
     if (this.value) {
       document.getElementById('faviconInput').value = this.value;
-      const title = this.options[this.selectedIndex]?.dataset?.title;
+      var title = this.options[this.selectedIndex]?.dataset?.title;
       if (title) document.getElementById('titleInput').value = title;
     }
   });
@@ -815,10 +902,10 @@
 
   navSettings.addEventListener('click', () => {
     settingsPopup.classList.add('active');
-    document.getElementById('faviconInput').value = localStorage.getItem('cloakFavicon') || '';
-    document.getElementById('titleInput').value = localStorage.getItem('cloakTitle') || '';
-    document.getElementById('autoCloakFaviconInput').value = localStorage.getItem('autoCloakFavicon') || '';
-    document.getElementById('autoCloakTitleInput').value = localStorage.getItem('autoCloakTitle') || '';
+    loadCloakInputs();
+    var p = document.getElementById('faviconPreset');
+    var val = localStorage.getItem(getCloakKeys()[0]);
+    if (val) p.value = val; else p.value = '';
     document.getElementById('themeSelect').value = currentTheme;
   });
 
@@ -901,65 +988,31 @@
   });
 
   document.getElementById('applyCloak').addEventListener('click', () => {
-    const favicon = document.getElementById('faviconInput').value.trim();
-    const title = document.getElementById('titleInput').value.trim();
-    if (favicon || title) applyCloak(favicon, title);
-  });
-
-  document.getElementById('resetCloak').addEventListener('click', resetCloak);
-
-  // Auto Cloak (tab switch) handlers
-  document.getElementById('autoCloakPreset').addEventListener('change', function() {
-    if (this.value) {
-      document.getElementById('autoCloakFaviconInput').value = this.value;
-      const title = this.options[this.selectedIndex]?.dataset?.title;
-      if (title) document.getElementById('autoCloakTitleInput').value = title;
+    var favicon = document.getElementById('faviconInput').value.trim();
+    var title = document.getElementById('titleInput').value.trim();
+    if (cloakMode === 'tab') {
+      if (favicon || title) applyCloak(favicon, title);
+    } else {
+      var k = getCloakKeys();
+      if (favicon) localStorage.setItem(k[0], favicon); else localStorage.removeItem(k[0]);
+      if (title) localStorage.setItem(k[1], title); else localStorage.removeItem(k[1]);
     }
   });
 
-  document.getElementById('applyAutoCloak').addEventListener('click', () => {
-    const favicon = document.getElementById('autoCloakFaviconInput').value.trim();
-    const title = document.getElementById('autoCloakTitleInput').value.trim();
-    if (favicon) localStorage.setItem('autoCloakFavicon', favicon);
-    else localStorage.removeItem('autoCloakFavicon');
-    if (title) localStorage.setItem('autoCloakTitle', title);
-    else localStorage.removeItem('autoCloakTitle');
-  });
-
-  document.getElementById('resetAutoCloak').addEventListener('click', () => {
-    localStorage.removeItem('autoCloakFavicon');
-    localStorage.removeItem('autoCloakTitle');
-    document.getElementById('autoCloakPreset').value = '';
-    document.getElementById('autoCloakFaviconInput').value = '';
-    document.getElementById('autoCloakTitleInput').value = '';
-  });
-
-  // URL Cloaking
-  document.getElementById('launchAboutBlank').addEventListener('click', function() {
-    const url = window.location.href;
-    const title = document.title;
-    const link = document.querySelector("link[rel*='icon']");
-    const favicon = link ? link.href : '';
-    const w = window.open('about:blank');
-    if (w) {
-      w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + title + '</title><link rel="icon" href="' + favicon + '"></head><body style="margin:0;overflow:hidden;"><iframe src="' + url + '" style="width:100vw;height:100vh;border:none;"></iframe></body></html>');
-      w.document.close();
+  document.getElementById('resetCloak').addEventListener('click', function() {
+    if (cloakMode === 'tab') {
+      resetCloak();
+    } else {
+      var k = getCloakKeys();
+      localStorage.removeItem(k[0]);
+      localStorage.removeItem(k[1]);
+      document.getElementById('faviconInput').value = '';
+      document.getElementById('titleInput').value = '';
+      document.getElementById('faviconPreset').value = '';
     }
   });
 
-  document.getElementById('launchBlob').addEventListener('click', function() {
-    const url = window.location.href;
-    const title = document.title;
-    const link = document.querySelector("link[rel*='icon']");
-    const favicon = link ? link.href : '';
-    const html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + title + '</title><link rel="icon" href="' + favicon + '"></head><body style="margin:0;overflow:hidden;"><iframe src="' + url + '" style="width:100vw;height:100vh;border:none;"></iframe></body></html>';
-    const iframe = document.createElement('iframe');
-    iframe.style.display = 'none';
-    iframe.sandbox = 'allow-scripts allow-popups';
-    iframe.srcdoc = '<script>var h=' + JSON.stringify(html) + ';var b=new Blob([h],{type:"text/html"});window.open(URL.createObjectURL(b));<\/script>';
-    document.body.appendChild(iframe);
-    setTimeout(function() { iframe.remove(); }, 100);
-  });
+  // URL Cloaking — removed at user request
 
   // Browser (tabbed proxy)
   const browserOverlay = document.getElementById('browserOverlay');
@@ -1209,10 +1262,10 @@
     if (savedFavicon || savedTitle) {
       return {
         favicon: savedFavicon || '/assets/images/icons/googleclassroom.ico',
-        title: savedTitle || 'Classroom'
+        title: savedTitle || 'Home'
       };
     }
-    return { favicon: '/assets/images/icons/googleclassroom.ico', title: 'Classroom' };
+    return { favicon: '/assets/images/icons/googleclassroom.ico', title: 'Home' };
   }
 
   let autoCloakSaved = null;

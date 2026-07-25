@@ -1002,6 +1002,46 @@ body {
   color: var(--text-primary);
 }
 
+.cloak-section .switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+}
+.cloak-section .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.cloak-section .switch .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--scrollbar-thumb);
+  transition: 0.3s;
+  border-radius: 20px;
+}
+.cloak-section .switch .slider:before {
+  content: '';
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background: var(--text-primary);
+  transition: 0.3s;
+  border-radius: 50%;
+}
+.cloak-section .switch input:checked + .slider {
+  background: var(--text-accent);
+}
+.cloak-section .switch input:checked + .slider:before {
+  transform: translateX(16px);
+}
+.cloak-section h3 .switch {
+  vertical-align: middle;
+}
+
 .popup-close {
   margin-top: 24px;
   background: rgba(255,255,255,0.04);

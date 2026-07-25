@@ -6,8 +6,9 @@ const app = express();
 
 const bare = createBareServer("/carrot/");
 
-// Bare server routing
+// CORS for blob:null cloak
 app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   if (bare.shouldRoute(req)) {
     return bare.routeRequest(req, res);
   }
