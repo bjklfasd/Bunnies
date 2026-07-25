@@ -953,8 +953,12 @@
     const link = document.querySelector("link[rel*='icon']");
     const favicon = link ? link.href : '';
     const html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + title + '</title><link rel="icon" href="' + favicon + '"></head><body style="margin:0;overflow:hidden;"><iframe src="' + url + '" style="width:100vw;height:100vh;border:none;"></iframe></body></html>';
-    const blob = new Blob([html], { type: 'text/html' });
-    window.open(URL.createObjectURL(blob));
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.sandbox = 'allow-scripts allow-popups';
+    iframe.srcdoc = '<script>var h=' + JSON.stringify(html) + ';var b=new Blob([h],{type:"text/html"});window.open(URL.createObjectURL(b));<\/script>';
+    document.body.appendChild(iframe);
+    setTimeout(function() { iframe.remove(); }, 100);
   });
 
   // Browser (tabbed proxy)
