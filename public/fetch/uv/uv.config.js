@@ -4,8 +4,7 @@ self.__uv$config = (() => {
     return {
         prefix: _0xdec("L2ZldGNoL3B1bGwv"),
 
-        // CONFIGURE YOUR BARE SERVER HERE
-        bare: "https://cdn.mathematical.brunys.xyz/bare/",
+        bare: "/carrot/",
 
         encodeUrl: Ultraviolet.codec.xor.encode,
         decodeUrl: Ultraviolet.codec.xor.decode,
