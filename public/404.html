@@ -59,7 +59,7 @@
     async function registerUV() {
       try {
         if (typeof __uv$config !== 'undefined' && 'serviceWorker' in navigator) {
-          await navigator.serviceWorker.register('/active/sw.js', { scope: __uv$config.prefix });
+          await navigator.serviceWorker.register('/fetch/sw.js', { scope: __uv$config.prefix });
         }
       } catch {}
     }

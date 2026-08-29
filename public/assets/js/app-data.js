@@ -75,5 +75,7 @@ const games = [
 ];
 
 const apps = [
+    { id: 'youtube', name: 'YouTube', url: 'https://youtube.com', img: '/assets/apps/yt.png' },
+    { id: 'tiktok', name: 'TikTok', url: 'https://tiktok.com', img: '/assets/apps/tt.jpeg' },
     { id: 'ao3', name: 'AO3', url: 'https://archiveofourown.org', img: '/assets/apps/ao3.svg' }
 ];
