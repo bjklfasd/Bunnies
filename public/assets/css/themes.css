@@ -49,21 +49,24 @@
     }
 
     .theme-midnight-purple {
-      --bg-primary: #1a1025;
-      --bg-secondary: rgba(26, 16, 37, 0.9);
-      --bg-card: rgba(26, 16, 37, 0.6);
-      --bg-container: rgba(10, 6, 18, 0.5);
-      --text-primary: #e8d5ff;
-      --text-secondary: #b89fd4;
-      --text-accent: #c89bff;
-      --border-color: rgba(180, 130, 255, 0.08);
-      --shadow-color: rgba(0, 0, 0, 0.5);
-      --hover-bg: rgba(180, 130, 255, 0.1);
-      --input-bg: rgba(10, 6, 18, 0.6);
-      --game-card-bg: rgba(26, 16, 37, 0.6);
-      --game-card-hover: rgba(26, 16, 37, 0.85);
-      --popup-bg: #1f1330;
-      --scrollbar-thumb: #5a3d7a;
+      --bg-primary: #000000;
+      --bg-secondary: rgba(0, 0, 0, 0.9);
+      --bg-card: rgba(0, 0, 0, 0.6);
+      --bg-container: rgba(18, 18, 18, 0.5);
+      --text-primary: #ffffff;
+      --text-secondary: #9e9e9e;
+      --text-accent: #ffffff;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --shadow-color: rgba(0, 0, 0, 0.6);
+      --hover-bg: rgba(255, 255, 255, 0.1);
+      --input-bg: rgba(22, 22, 22, 0.6);
+      --game-card-bg: rgba(24, 24, 24, 0.6);
+      --game-card-hover: rgba(40, 40, 40, 0.85);
+      --popup-bg: #141414;
+      --scrollbar-thumb: #3a3a3a;
+    }
+    .theme-midnight-purple .nav-icons button.active {
+      background: rgba(255, 255, 255, 0.12);
     }
     .theme-arctic-freeze {
   --bg-primary: #dceefd;

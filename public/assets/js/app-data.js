@@ -2,6 +2,7 @@ const games = [
     { id: 'roblox', name: 'Roblox', url: 'https://nowgg.fun/apps/a/19900/b.html', img: '/assets/games/roblox/roblox.png' },
     { id: 'fortnite', name: 'Fortnite', url: 'https://nowgg.fun/apps/aptoide/5874/aptoide.html', img: '/assets/games/fortnite/fortnite.png' },
     { id: 'lolbeans', name: 'LOLBeans', url: 'https://bean.lol', img: '/assets/games/lolbeans/lolbeans.jpg' },
+    { id: 'geometry-dash', name: 'Geometry Dash', url: '/assets/games/geometrydash/stable.html', img: '/assets/games/geometrydash/gd.jpeg' },
     { id: '1-date-danger', name: '1 Date Danger', url: '/assets/games/1datedanger/', img: '/assets/games/1datedanger/logo.png' },
     { id: 'bfdia-5b', name: 'BFDIA 5b', url: '/assets/games/bfdia5b/', img: '/assets/games/bfdia5b/637.png' },
     { id: 'hollow-knight', name: 'Hollow Knight', url: '/assets/games/hollowknight/', img: '/assets/games/hollowknight/468.png' },

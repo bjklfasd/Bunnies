@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/main.css?v=15">
 <meta property="og:title" content="Log in to Schoology">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="google-site-verification" content="6ystVr7sfpd20ctZGukFGunzOJQW7O6kJpXvzAxSEzI">
@@ -37,14 +37,13 @@
 
       <div class="nav-icons">
         <button id="navHome" class="active" title="Home"><i class="fas fa-house"></i></button>
-        <button id="navApps" title="Apps"><i class="fas fa-th-large"></i></button>
         <button id="navGames" title="Games"><i class="fas fa-gamepad"></i></button>
+        <button id="navApps" title="Apps"><i class="fas fa-th-large"></i></button>
         <button id="navAddons" title="Add-ons"><i class="fas fa-puzzle-piece"></i></button>
       </div>
 
       <div class="nav-bottom">
         <button id="navSettings" title="Settings"><i class="fas fa-gear"></i></button>
-        <button id="navAi" title="AI assistant"><i class="fas fa-robot"></i></button>
       </div>
     </nav>
 
@@ -56,7 +55,6 @@
             <button id="navBack" title="Back"><i class="fas fa-arrow-left"></i></button>
             <button id="navForward" title="Forward"><i class="fas fa-arrow-right"></i></button>
             <button id="navReload" title="Reload"><i class="fas fa-rotate"></i></button>
-            <button id="navFullscreen" title="Fullscreen"><i class="fas fa-expand"></i></button>
           </div>
         </div>
 
@@ -78,11 +76,9 @@
                 </a>
               </div>
 
-              <input type="text" class="home-search-bar" id="homeSearchBar" placeholder='Ask AI about the site... '>
-
-              <div class="ai-response-home" id="aiResponseHome">
-                <span class="ai-label"><i class="fas fa-robot"></i> AI:</span>
-                <span id="aiResponseHomeText">Ask me anything about the site!</span>
+              <div class="home-search-wrap">
+                <i class="fas fa-search home-search-icon"></i>
+                <input type="text" class="home-search-bar" id="homeSearchBar" placeholder='Search or type a URL...'>
               </div>
             </div>
             <div class="recent-section">
@@ -126,25 +122,6 @@
       <h2><i class="fas fa-puzzle-piece"></i> Extensions</h2>
       <p>Find and manage helpful tools</p>
       
-      <div class="extension-item" id="autoClickerExt">
-        <div class="ext-header">
-          <h3><i class="fas fa-mouse-pointer"></i> Auto Clicker</h3>
-          <span id="clickerStatus" style="font-size:0.8rem; opacity:0.6;">Stopped</span>
-        </div>
-        <div class="ext-desc">Automatically clicks at a set interval. Set your own keybind below.</div>
-        <div class="ext-controls">
-          <input type="number" id="clickerInterval" value="100" min="50" max="10000" placeholder="ms">
-          <span style="font-size:0.8rem; opacity:0.6;">ms</span>
-          <button id="toggleClicker"><i class="fas fa-play"></i> Start</button>
-          <button id="clickerTest" class="danger"><i class="fas fa-bolt"></i> Test</button>
-          <div class="keybind-input">
-            <input type="text" id="clickerKeybind" value="F8" maxlength="20" placeholder="Key">
-            <span class="keybind-hint">keybind</span>
-          </div>
-        </div>
-        <div class="ext-status" id="clickerInfo">Click interval: 100ms • Press F8 to toggle</div>
-      </div>
-
       <div class="extension-item" id="iframeEmbedderExt">
         <div class="ext-header">
           <h3><i class="fas fa-window-maximize"></i> Iframe Embedder</h3>
@@ -232,21 +209,13 @@
             <button class="primary" id="applyCustomTheme"><i class="fas fa-check"></i> Apply Custom Theme</button>
             <button id="resetCustomTheme"><i class="fas fa-undo"></i> Reset</button>
           </div>
-          <div style="font-size:0.8rem; opacity:0.5; margin-top:8px;">Your custom theme will be saved automatically</div>
+          <div class="theme-actions share-actions">
+            <button id="exportTheme" title="Save your theme as a shareable file"><i class="fas fa-share"></i> Export</button>
+            <button id="importTheme" title="Load a shared theme file"><i class="fas fa-file-import"></i> Import</button>
+            <input type="file" id="themeImportInput" accept=".bunny,.bun,.json,application/json,text/plain" style="display:none;">
+          </div>
+          <div class="ext-status" id="themeStatus">Your custom theme will be saved automatically</div>
         </div>
-      </div>
-
-      <div class="extension-item">
-        <div class="ext-header">
-          <h3><i class="fa-solid fa-globe"></i> Browser</h3>
-          <span style="font-size:0.8rem; opacity:0.6;">Tabs, nav, proxy</span>
-        </div>
-        <div class="ext-desc">Browse the web with a full tabbed browser experience.</div>
-        <div class="ext-controls">
-          <input type="text" id="browserUrlInput" placeholder="Search or type URL..." autocomplete="off">
-          <button id="browserLaunchBtn"><i class="fas fa-arrow-right"></i> Go</button>
-        </div>
-        <div class="ext-status" id="browserStatus">Enter a URL or search term to begin</div>
       </div>
 
       <button class="popup-close" id="closeAddonPopup">Close</button>
@@ -312,36 +281,18 @@
         </div>
       </div>
 
+      <div class="theme-selector">
+        <label><i class="fas fa-bars"></i> Nav Bar Position</label>
+        <select id="navPositionSelect">
+          <option value="left">Left (Default)</option>
+          <option value="top">Top</option>
+        </select>
+      </div>
+
 
       </div>
 
       <button class="popup-close" id="closeSettingsPopup">Close</button>
-    </div>
-  </div>
-
-  <div class="popup-overlay" id="aiPopup">
-    <div class="popup-box">
-      <button class="popup-close-x" id="closeAiPopupX"><i class="fas fa-times"></i></button>
-      <h2><i class="fas fa-robot"></i> AI Assistant</h2>
-      <p>Ask me anything about the site, or use the preset questions below.</p>
-      
-      <div class="ai-presets">
-        <button data-question="Where can I find custom themes?"><i class="fas fa-palette"></i> Custom Themes</button>
-        <button data-question="How do I change the logo?"><i class="fas fa-image"></i> Change Logo</button>
-        <button data-question="Where are the settings?"><i class="fas fa-gear"></i> Settings</button>
-        <button data-question="How do I use the auto clicker?"><i class="fas fa-mouse-pointer"></i> Auto Clicker</button>
-        <button data-question="How do I embed a website?"><i class="fas fa-window-maximize"></i> Embed Website</button>
-        <button data-question="What games can I play?"><i class="fas fa-gamepad"></i> Games</button>
-        <button data-question="What apps are available?"><i class="fas fa-th-large"></i> Apps</button>
-        <button data-question="How do I change the theme?"><i class="fas fa-paint-brush"></i> Change Theme</button>
-      </div>
-      
-      <div style="background:var(--input-bg); border-radius:60px; padding:6px 16px; margin:16px 0; display:flex; border:1px solid var(--border-color);">
-        <input type="text" id="aiInput" placeholder="Ask me anything..." style="flex:1; background:transparent; border:none; color:var(--text-primary); padding:12px 6px; outline:none; font-size:1rem;">
-        <button id="aiSendBtn" style="background:var(--scrollbar-thumb); border:none; color:white; border-radius:60px; padding:8px 24px; cursor:pointer;"><i class="fas fa-arrow-right"></i></button>
-      </div>
-      <div id="aiResponse" style="background:var(--input-bg); border-radius:24px; padding:16px; min-height:80px; max-height:220px; overflow-y:auto; margin:10px 0; font-size:0.95rem; border:1px solid var(--border-color); line-height:1.6;"><i class="fas fa-robot" style="color:var(--text-accent); margin-right:8px;"></i> Hello! I'm your AI assistant. Ask me anything about the site or click a preset question above.</div>
-      <button class="popup-close" id="closeAiPopup">Close</button>
     </div>
   </div>
 
@@ -364,10 +315,97 @@
     </div>
   </div>
 
+  <button id="instantFab" class="instant-fab" title="Bunnies Instant Play"><i class="fas fa-bolt"></i></button>
+
+  <div class="instant-overlay" id="instantOverlay">
+    <div class="instant-panel" id="instantPanel">
+      <div class="instant-header">
+        <h2><i class="fas fa-bolt"></i> Instant Play</h2>
+        <button class="instant-close" id="instantClose" title="Close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="instant-body">
+
+        <div class="instant-search-wrap">
+          <i class="fas fa-search instant-search-icon"></i>
+          <input type="text" id="instantSearchBar" placeholder="Search or type a URL..." autocomplete="off">
+        </div>
+
+        <div class="instant-quicklinks">
+          <button class="instant-ql" data-url="https://www.youtube.com" title="YouTube"><i class="fab fa-youtube"></i></button>
+          <button class="instant-ql" data-url="https://www.google.com" title="Google"><i class="fab fa-google"></i></button>
+          <button class="instant-ql" data-url="https://discord.com" title="Discord"><i class="fab fa-discord"></i></button>
+          <button class="instant-ql" data-url="https://open.spotify.com" title="Spotify"><i class="fab fa-spotify"></i></button>
+          <button class="instant-ql" data-url="https://www.reddit.com" title="Reddit"><i class="fab fa-reddit-alien"></i></button>
+          <button class="instant-ql" data-url="https://www.tiktok.com" title="TikTok"><i class="fab fa-tiktok"></i></button>
+          <button class="instant-ql" data-url="https://www.desmos.com/calculator" title="Desmos"><i class="fas fa-chart-line"></i></button>
+          <button class="instant-ql" data-url="https://classroom.google.com" title="Classroom"><i class="fas fa-school"></i></button>
+        </div>
+
+        <div class="instant-section">
+          <h3><i class="fas fa-heart"></i> Favorites</h3>
+          <div class="instant-grid" id="instantFavorites"></div>
+        </div>
+
+        <div class="instant-section">
+          <h3><i class="fas fa-clock"></i> Recently Played</h3>
+          <div class="instant-grid" id="instantGames"></div>
+        </div>
+
+        <div class="instant-section">
+          <h3><i class="fas fa-clock"></i> Recently Used</h3>
+          <div class="instant-grid" id="instantApps"></div>
+        </div>
+
+        <div class="instant-section">
+          <h3><i class="fas fa-video"></i> Screen Recorder</h3>
+          <div class="recorder-controls">
+            <button id="recStart"><i class="fas fa-circle"></i> Record</button>
+            <button id="recStop" disabled><i class="fas fa-stop"></i> Stop</button>
+            <a id="recDownload" class="rec-download" download="bunnies-recording.webm"><i class="fas fa-download"></i> Download</a>
+          </div>
+          <div class="rec-status" id="recStatus">Not recording</div>
+          <video id="recVideo" class="rec-video" controls style="display:none;"></video>
+        </div>
+
+        <div class="instant-section">
+          <h3><i class="fas fa-microchip"></i> Performance</h3>
+          <div class="instant-option">
+            <div>
+              <span>Disable Particles</span>
+              <small>Turn off the floating background particles</small>
+            </div>
+            <label class="switch"><input type="checkbox" id="particlesToggle"><span class="slider"></span></label>
+          </div>
+          <div class="instant-option">
+            <div>
+              <span>Simple Mode</span>
+              <small>Strip Bunnies to a cleaner, simpler look</small>
+            </div>
+            <label class="switch"><input type="checkbox" id="simpleModeToggle"><span class="slider"></span></label>
+          </div>
+          <div class="instant-option">
+            <div>
+              <span>Reduce Motion</span>
+              <small>Disable animations and transitions</small>
+            </div>
+            <label class="switch"><input type="checkbox" id="reduceMotionToggle"><span class="slider"></span></label>
+          </div>
+          <div class="instant-option">
+            <div>
+              <span>Bigger Iframes</span>
+              <small>Make game and app iframes wider and taller</small>
+            </div>
+            <label class="switch"><input type="checkbox" id="bigIframesToggle"><span class="slider"></span></label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script src="/assets/js/app-data.js"></script>
-  <script src="/assets/js/app-ai.js"></script>
-  <script src="/assets/js/app-core.js"></script>
+  <script src="/assets/js/app-data.js?v=15"></script>
+  <script src="/assets/js/app-core.js?v=15"></script>
   <script src="/fetch/uv/uv.bundle.js" defer></script>
   <script src="/fetch/uv/uv.config.js" defer></script>
   <script src="/fetch/register-sw.js" defer></script>

@@ -1,18 +1,65 @@
 (function() {
-  particlesJS('particles-js', {
-    "particles": {
-      "number": { "value": 70, "density": { "enable": true, "value_area": 800 } },
-      "color": { "value": "#b7a0c9" },
-      "shape": { "type": "circle" },
-      "opacity": { "value": 0.4, "random": true },
-      "size": { "value": 3, "random": true },
-      "line_linked": { "enable": true, "distance": 150, "color": "#9370b3", "opacity": 0.2, "width": 1 },
-      "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
-    },
-    "interactivity": {
-      "events": { "onhover": { "enable": true, "mode": "repulse" } }
+  function initParticles(particleColor, linkColor) {
+    if (window.pJSDom) {
+      Object.values(window.pJSDom).forEach(p => {
+        try { if (p.pJS && p.pJS.fn.vendors.destroy) p.pJS.fn.vendors.destroy(); } catch (e) {}
+      });
+      window.pJSDom = [];
     }
-  });
+    particlesJS('particles-js', {
+      "particles": {
+        "number": { "value": 70, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": particleColor },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.4, "random": true },
+        "size": { "value": 3, "random": true },
+        "line_linked": { "enable": true, "distance": 150, "color": linkColor, "opacity": 0.2, "width": 1 },
+        "move": { "enable": true, "speed": 2, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
+      },
+      "interactivity": {
+        "events": { "onhover": { "enable": true, "mode": "repulse" } }
+      }
+    });
+  }
+
+  const particleThemeColors = {
+    'default': { dot: '#b7a0c9', link: '#9370b3' },
+    'midnight-purple': { dot: '#9e9e9e', link: '#ffffff' },
+    'arctic-freeze': { dot: '#5f87a8', link: '#6aaed6' },
+    'forest-night': { dot: '#7fa37f', link: '#5fb85f' },
+    'cherry-blossom': { dot: '#9c7486', link: '#f29ab2' },
+    'cyber-neon': { dot: '#70b0d0', link: '#00ffaa' },
+    'royal-crimson': { dot: '#d49a9a', link: '#e05050' },
+    'galaxy': { dot: '#9a8ab8', link: '#7a5ad0' }
+  };
+
+  let currentParticleDot = '#b7a0c9';
+  let currentParticleLink = '#9370b3';
+
+  function updateParticlesForTheme(themeId) {
+    let pc = particleThemeColors[themeId] || particleThemeColors['default'];
+    if (themeId === 'custom' && customThemeData) {
+      pc = { dot: customThemeData.secondary || '#b89fd4', link: customThemeData.accent || '#c89bff' };
+    }
+    currentParticleDot = pc.dot;
+    currentParticleLink = pc.link;
+    if (localStorage.getItem('particlesDisabled') !== 'true') {
+      initParticles(currentParticleDot, currentParticleLink);
+    }
+  }
+
+  function applyParticlesState() {
+    if (localStorage.getItem('particlesDisabled') === 'true') {
+      if (window.pJSDom) {
+        Object.values(window.pJSDom).forEach(p => {
+          try { if (p.pJS && p.pJS.fn.vendors.destroy) p.pJS.fn.vendors.destroy(); } catch (e) {}
+        });
+        window.pJSDom = [];
+      }
+    } else {
+      initParticles(currentParticleDot, currentParticleLink);
+    }
+  }
 
   const defaultLogo = "/assets/images/bunnies.png";
 
@@ -68,11 +115,11 @@
       '--popup-bg': '#2a2238', '--scrollbar-thumb': '#3d2b4f'
     },
     'midnight-purple': {
-      '--bg-primary': '#1a1025', '--bg-secondary': 'rgba(26,16,37,0.9)', '--bg-card': 'rgba(26,16,37,0.6)', '--bg-container': 'rgba(10,6,18,0.5)',
-      '--text-primary': '#e8d5ff', '--text-secondary': '#b89fd4', '--text-accent': '#c89bff',
-      '--border-color': 'rgba(180,130,255,0.08)', '--shadow-color': 'rgba(0,0,0,0.5)', '--hover-bg': 'rgba(180,130,255,0.1)',
-      '--input-bg': 'rgba(10,6,18,0.6)', '--game-card-bg': 'rgba(26,16,37,0.6)', '--game-card-hover': 'rgba(26,16,37,0.85)',
-      '--popup-bg': '#1f1330', '--scrollbar-thumb': '#5a3d7a'
+      '--bg-primary': '#000000', '--bg-secondary': 'rgba(0,0,0,0.9)', '--bg-card': 'rgba(0,0,0,0.6)', '--bg-container': 'rgba(18,18,18,0.5)',
+      '--text-primary': '#ffffff', '--text-secondary': '#9e9e9e', '--text-accent': '#ffffff',
+      '--border-color': 'rgba(255,255,255,0.1)', '--shadow-color': 'rgba(0,0,0,0.6)', '--hover-bg': 'rgba(255,255,255,0.1)',
+      '--input-bg': 'rgba(22,22,22,0.6)', '--game-card-bg': 'rgba(24,24,24,0.6)', '--game-card-hover': 'rgba(40,40,40,0.85)',
+      '--popup-bg': '#141414', '--scrollbar-thumb': '#3a3a3a'
     },
     'arctic-freeze': {
       '--bg-primary': '#dceefd', '--bg-secondary': 'rgba(220,238,253,0.92)', '--bg-card': 'rgba(255,255,255,0.65)', '--bg-container': 'rgba(245,250,255,0.75)',
@@ -152,6 +199,7 @@
       localStorage.setItem('selectedTheme', 'default');
       currentTheme = 'default';
     }
+    updateParticlesForTheme(currentTheme);
     applyFont(currentFont);
     var select = document.getElementById('themeSelect');
     if (select) select.value = currentTheme;
@@ -187,6 +235,75 @@
     document.documentElement.style.cssText = '';
     applyTheme('default');
     document.getElementById('themeSelect').value = 'default';
+  });
+
+  const themeStatusEl = document.getElementById('themeStatus');
+
+  function fillCustomThemeInputs(data) {
+    const map = { bg: 'customBg', text: 'customText', accent: 'customAccent', secondary: 'customSecondary' };
+    Object.keys(map).forEach(key => {
+      const id = map[key];
+      document.getElementById(id).value = data[key] || '';
+      const textId = id + 'Text';
+      const textEl = document.getElementById(textId);
+      if (textEl) textEl.value = data[key] || '';
+    });
+  }
+
+  document.getElementById('exportTheme').addEventListener('click', () => {
+    const data = {
+      bunniesTheme: 1,
+      name: 'Bunnies Theme',
+      colors: {
+        bg: document.getElementById('customBg').value,
+        text: document.getElementById('customText').value,
+        accent: document.getElementById('customAccent').value,
+        secondary: document.getElementById('customSecondary').value
+      }
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'bunnies-theme.bunny';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+    if (themeStatusEl) themeStatusEl.textContent = 'Theme exported as bunnies-theme.bunny';
+  });
+
+  document.getElementById('importTheme').addEventListener('click', () => {
+    document.getElementById('themeImportInput').click();
+  });
+
+  document.getElementById('themeImportInput').addEventListener('change', (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const parsed = JSON.parse(reader.result);
+        const colors = parsed && parsed.bunniesTheme ? parsed.colors : parsed;
+        const hex = v => (typeof v === 'string' && /^#[0-9a-fA-F]{6}$/.test(v)) ? v : null;
+        const data = {
+          bg: hex(colors && colors.bg),
+          text: hex(colors && colors.text),
+          accent: hex(colors && colors.accent),
+          secondary: hex(colors && colors.secondary)
+        };
+        if (parsed && typeof parsed.name === 'string') data._name = parsed.name;
+        if (!data.bg || !data.text || !data.accent || !data.secondary) throw new Error('missing valid colors (#RRGGBB)');
+        customThemeData = { bg: data.bg, text: data.text, accent: data.accent, secondary: data.secondary };
+        localStorage.setItem('customTheme', JSON.stringify(customThemeData));
+        fillCustomThemeInputs(customThemeData);
+        applyTheme('custom');
+        if (themeStatusEl) themeStatusEl.textContent = 'Theme imported' + (data._name ? ': "' + data._name + '"' : '');
+      } catch (err) {
+        if (themeStatusEl) themeStatusEl.textContent = 'Import failed: ' + err.message;
+      }
+      e.target.value = '';
+    };
+    reader.readAsText(file);
   });
 
   let currentFont = localStorage.getItem('siteFont') || 'Poppins';
@@ -289,101 +406,6 @@
     }
   });
 
-  let clickerInterval = null;
-  let isClickerRunning = false;
-  let clickerKeybind = localStorage.getItem('clickerKeybind') || 'F8';
-
-  function loadKeybind() {
-    const input = document.getElementById('clickerKeybind');
-    if (input) input.value = clickerKeybind;
-    updateClickerInfo();
-  }
-
-  function updateClickerInfo() {
-    const info = document.getElementById('clickerInfo');
-    const ms = parseInt(document.getElementById('clickerInterval').value) || 100;
-    if (isClickerRunning) {
-      info.textContent = `Clicking every ${ms}ms • Press ${clickerKeybind} to stop`;
-    } else {
-      info.textContent = `Click interval: ${ms}ms • Press ${clickerKeybind} to start`;
-    }
-  }
-
-  function saveKeybind(key) {
-    clickerKeybind = key.toUpperCase();
-    localStorage.setItem('clickerKeybind', clickerKeybind);
-    updateClickerInfo();
-  }
-
-  document.getElementById('clickerKeybind').addEventListener('keydown', function(e) {
-    e.preventDefault();
-    let key = e.key;
-    const specialKeys = {
-      ' ': 'SPACE', 'Escape': 'ESC', 'Control': 'CTRL', 'Shift': 'SHIFT',
-      'Alt': 'ALT', 'Meta': 'WIN', 'ArrowUp': 'UP', 'ArrowDown': 'DOWN',
-      'ArrowLeft': 'LEFT', 'ArrowRight': 'RIGHT', 'Enter': 'ENTER',
-      'Tab': 'TAB', 'Backspace': 'BACKSPACE', 'Delete': 'DELETE',
-      'Home': 'HOME', 'End': 'END', 'PageUp': 'PAGEUP', 'PageDown': 'PAGEDOWN'
-    };
-    key = specialKeys[key] || (key.length === 1 ? key.toUpperCase() : key);
-    this.value = key;
-    saveKeybind(key);
-  });
-
-  function simulateClick() {
-    const event = new MouseEvent('click', { view: window, bubbles: true, cancelable: true });
-    document.activeElement?.dispatchEvent(event);
-    const el = document.elementFromPoint(window.innerWidth / 2, window.innerHeight / 2);
-    if (el) el.click();
-  }
-
-  function toggleClicker() {
-    const intervalInput = document.getElementById('clickerInterval');
-    const status = document.getElementById('clickerStatus');
-    const info = document.getElementById('clickerInfo');
-    const btn = document.getElementById('toggleClicker');
-
-    if (isClickerRunning) {
-      clearInterval(clickerInterval);
-      clickerInterval = null;
-      isClickerRunning = false;
-      btn.innerHTML = '<i class="fas fa-play"></i> Start';
-      status.textContent = 'Stopped';
-      status.style.color = 'var(--text-secondary)';
-      info.textContent = `Clicker stopped • Press ${clickerKeybind} to start`;
-    } else {
-      const ms = parseInt(intervalInput.value) || 100;
-      if (ms < 50) { info.textContent = '⚠️ Minimum interval is 50ms'; return; }
-      clickerInterval = setInterval(simulateClick, ms);
-      isClickerRunning = true;
-      btn.innerHTML = '<i class="fas fa-stop"></i> Stop';
-      status.textContent = 'Running';
-      status.style.color = '#5fb85f';
-      info.textContent = `Clicking every ${ms}ms • Press ${clickerKeybind} to stop`;
-    }
-  }
-
-  document.getElementById('toggleClicker').addEventListener('click', toggleClicker);
-  document.getElementById('clickerTest').addEventListener('click', function() {
-    simulateClick();
-    document.getElementById('clickerInfo').textContent = '✅ Test click performed!';
-    setTimeout(updateClickerInfo, 1000);
-  });
-  document.getElementById('clickerInterval').addEventListener('change', updateClickerInfo);
-
-  document.addEventListener('keydown', (e) => {
-    let key = e.key;
-    const specialKeys = {
-      ' ': 'SPACE', 'Escape': 'ESC', 'Control': 'CTRL', 'Shift': 'SHIFT',
-      'Alt': 'ALT', 'Meta': 'WIN', 'ArrowUp': 'UP', 'ArrowDown': 'DOWN',
-      'ArrowLeft': 'LEFT', 'ArrowRight': 'RIGHT', 'Enter': 'ENTER',
-      'Tab': 'TAB', 'Backspace': 'BACKSPACE', 'Delete': 'DELETE',
-      'Home': 'HOME', 'End': 'END', 'PageUp': 'PAGEUP', 'PageDown': 'PAGEDOWN'
-    };
-    key = specialKeys[key] || (key.length === 1 ? key.toUpperCase() : key);
-    if (key === clickerKeybind) { e.preventDefault(); toggleClicker(); }
-  });
-
   let embedOverlay = null;
   let embedIframe = null;
   let embedClose = null;
@@ -468,6 +490,7 @@
     localStorage.setItem('recent' + type, JSON.stringify(recent));
     if (type === 'Games') renderRecentGames();
     else renderRecentApps();
+    renderInstantPanels();
   }
 
   function getFavorites() {
@@ -494,6 +517,7 @@
     renderRecentGames();
     renderRecentApps();
     renderFavorites();
+    renderInstantPanels();
     if (currentPage === 'games') renderGamesRoster(document.getElementById('sharedSearchBar').value);
     else if (currentPage === 'apps') renderAppsRoster(document.getElementById('sharedSearchBar').value);
   }
@@ -683,33 +707,12 @@
   }
 
   const homeSearchBar = document.getElementById('homeSearchBar');
-  const aiResponseHome = document.getElementById('aiResponseHome');
-  const aiResponseHomeText = document.getElementById('aiResponseHomeText');
-
-  function updateHomeAIResponse(text) {
-    aiResponseHomeText.textContent = text;
-    aiResponseHome.classList.add('visible');
-  }
-
-  homeSearchBar.addEventListener('input', function() {
-    const query = this.value.trim();
-    if (query.length > 2) {
-      const response = getAIResponse(query);
-      if (response) updateHomeAIResponse(response);
-    } else if (query.length === 0) {
-      aiResponseHome.classList.remove('visible');
-    }
-  });
 
   homeSearchBar.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' && this.value.trim().length > 2) {
+    if (e.key === 'Enter' && this.value.trim()) {
       const query = this.value.trim();
-      const response = getAIResponse(query);
-      if (response) {
-        updateHomeAIResponse(response);
-      } else {
-        updateHomeAIResponse('I don\'t have a quick answer for that. Try asking in the AI assistant!');
-      }
+      this.value = '';
+      browserOpen(query);
     }
   });
 
@@ -753,7 +756,6 @@
   const navGames = document.getElementById('navGames');
   const navAddons = document.getElementById('navAddons');
   const navSettings = document.getElementById('navSettings');
-  const navAi = document.getElementById('navAi');
 
   const backBtn = document.getElementById('navBack');
   const forwardBtn = document.getElementById('navForward');
@@ -793,7 +795,6 @@
     gamesRoster.style.display = 'none';
     appsRoster.style.display = 'none';
     searchBar.classList.remove('visible');
-    document.getElementById('aiResponseHome').classList.remove('visible');
     searchBar.value = '';
 
     if (page === 'home') {
@@ -850,15 +851,6 @@
     }
   });
 
-  document.getElementById('navFullscreen').addEventListener('click', () => {
-    const card = document.getElementById('contentCard');
-    if (!document.fullscreenElement) {
-      card.requestFullscreen?.() || card.webkitRequestFullscreen?.();
-    } else {
-      document.exitFullscreen?.() || document.webkitExitFullscreen?.();
-    }
-  });
-
   document.getElementById('discordLink').addEventListener('click', (e) => {
     e.preventDefault();
     window.open('/discord', '_blank');
@@ -871,13 +863,11 @@
 
   document.getElementById('closeAddonPopupX').addEventListener('click', () => addonPopup.classList.remove('active'));
   document.getElementById('closeSettingsPopupX').addEventListener('click', () => settingsPopup.classList.remove('active'));
-  document.getElementById('closeAiPopupX').addEventListener('click', () => aiPopup.classList.remove('active'));
 
   document.getElementById('closeAddonPopup').addEventListener('click', () => addonPopup.classList.remove('active'));
   document.getElementById('closeSettingsPopup').addEventListener('click', () => settingsPopup.classList.remove('active'));
-  document.getElementById('closeAiPopup').addEventListener('click', () => aiPopup.classList.remove('active'));
 
-  [addonPopup, settingsPopup, aiPopup].forEach(pop => {
+  [addonPopup, settingsPopup].forEach(pop => {
     pop.addEventListener('click', (e) => { if (e.target === pop) pop.classList.remove('active'); });
   });
 
@@ -893,7 +883,6 @@
       document.getElementById('customSecondary').value = customThemeData.secondary || '#b89fd4';
       document.getElementById('customSecondaryText').value = customThemeData.secondary || '#b89fd4';
     }
-    loadKeybind();
     const fontSelect = document.getElementById('fontSelect');
     if (fontSelect) fontSelect.value = currentFont;
     const fontStatus = document.getElementById('fontStatus');
@@ -907,84 +896,23 @@
     var val = localStorage.getItem(getCloakKeys()[0]);
     if (val) p.value = val; else p.value = '';
     document.getElementById('themeSelect').value = currentTheme;
-  });
-
-  navAi.addEventListener('click', () => {
-    aiPopup.classList.add('active');
-    document.getElementById('aiResponse').innerHTML = '<i class="fas fa-robot" style="color:var(--text-accent); margin-right:8px;"></i> Hello! I\'m your AI assistant. Ask me anything about the site or click a preset question above.';
-    document.getElementById('aiInput').value = '';
-  });
-
-  document.querySelectorAll('.ai-presets button').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const question = this.dataset.question;
-      document.getElementById('aiInput').value = question;
-      sendAIQuestion(question);
-    });
-  });
-
-  const aiSendBtn = document.getElementById('aiSendBtn');
-  const aiInput = document.getElementById('aiInput');
-  const aiResponse = document.getElementById('aiResponse');
-  const GROQ_API_KEY = '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';
-
-  function sendAIQuestion(query) {
-    if (!query.trim()) { aiResponse.innerHTML = 'Please ask something!'; return; }
-    aiResponse.innerHTML = '<i class="fas fa-spinner fa-spin"></i> thinking...';
-
-    const localAnswer = getAIResponse(query);
-    if (localAnswer) {
-      aiResponse.innerHTML = `<i class="fas fa-robot" style="color:var(--text-accent); margin-right:8px;"></i> ${localAnswer}`;
-      return;
-    }
-
-    try {
-      fetch('https://api.groq.com/openai/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${GROQ_API_KEY}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          model: 'llama3-70b-8192',
-          messages: [{
-            role: 'system',
-            content: 'You are a helpful assistant for a website called "Bunnies". The site has features like: apps, games, custom themes, custom logo upload, auto clicker with keybinds, iframe embedder, settings, tab cloaking, and extensions. Keep answers concise and helpful. If the user asks a general question not related to the site (like writing an essay, answering trivia, or anything else), answer that too.'
-          },
-          {
-            role: 'user',
-            content: query
-          }],
-          temperature: 0.7,
-          max_tokens: 500
-        })
-      })
-        .then(res => {
-          if (!res.ok) throw new Error(`API error ${res.status}`);
-          return res.json();
-        })
-        .then(data => {
-          const reply = data.choices?.[0]?.message?.content || 'No reply';
-          aiResponse.innerHTML = `<i class="fas fa-robot" style="color:var(--text-accent); margin-right:8px;"></i> ${reply}`;
-        })
-        .catch(() => {
-          aiResponse.innerHTML = `<i class="fas fa-robot" style="color:var(--text-accent); margin-right:8px;"></i> Hmm, I'm having trouble connecting right now. Try asking again or check your connection!`;
-        });
-    } catch {
-      aiResponse.innerHTML = `<i class="fas fa-robot" style="color:var(--text-accent); margin-right:8px;"></i> Hmm, I'm having trouble connecting right now. Try asking again or check your connection!`;
-    }
-  }
-
-  aiSendBtn.addEventListener('click', () => {
-    sendAIQuestion(aiInput.value);
-  });
-
-  aiInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') sendAIQuestion(aiInput.value);
+    document.getElementById('navPositionSelect').value = localStorage.getItem('navPosition') || 'left';
   });
 
   document.getElementById('themeSelect').addEventListener('change', function() {
     applyTheme(this.value);
+  });
+
+  function applyNavPosition() {
+    const pos = localStorage.getItem('navPosition') || 'left';
+    document.body.classList.toggle('nav-top', pos === 'top');
+    const sel = document.getElementById('navPositionSelect');
+    if (sel) sel.value = pos;
+  }
+
+  document.getElementById('navPositionSelect').addEventListener('change', function() {
+    localStorage.setItem('navPosition', this.value);
+    applyNavPosition();
   });
 
   document.getElementById('applyCloak').addEventListener('click', () => {
@@ -1399,12 +1327,230 @@
     });
   })();
 
+  /* ===== Bunnies Instant Play ===== */
+  const instantOverlay = document.getElementById('instantOverlay');
+  const instantPlayBtn = document.getElementById('instantFab');
+  const instantCloseBtn = document.getElementById('instantClose');
+  const instantSearchBar = document.getElementById('instantSearchBar');
+  const instantFavoritesEl = document.getElementById('instantFavorites');
+  const instantGamesEl = document.getElementById('instantGames');
+  const instantAppsEl = document.getElementById('instantApps');
+  const particlesToggle = document.getElementById('particlesToggle');
+  const simpleModeToggle = document.getElementById('simpleModeToggle');
+  const reduceMotionToggle = document.getElementById('reduceMotionToggle');
+  const bigIframesToggle = document.getElementById('bigIframesToggle');
+
+  function closeInstantPlay() {
+    instantOverlay.classList.remove('active');
+    document.body.classList.remove('instant-open');
+  }
+
+  function renderInstantFavorites() {
+    const favs = getFavorites();
+    if (!favs.length) {
+      instantFavoritesEl.innerHTML = '<span class="instant-empty">No favorites yet</span>';
+      return;
+    }
+    const items = favs.map(f => {
+      const game = games.find(g => g.id === f.id);
+      const app = apps.find(a => a.id === f.id);
+      return game || app;
+    }).filter(Boolean);
+    instantFavoritesEl.innerHTML = items.map(item => {
+      const type = games.some(g => g.id === item.id) ? 'game' : 'app';
+      return `
+        <div class="instant-item" data-id="${item.id}" data-type="${type}">
+          <img src="${item.img}" alt="${item.name}" onerror="handleImgError(this)">
+          <span class="instant-name">${item.name}</span>
+        </div>`;
+    }).join('');
+    instantFavoritesEl.querySelectorAll('.instant-item').forEach(el => {
+      el.addEventListener('click', () => {
+        const item = games.find(g => g.id === el.dataset.id) || apps.find(a => a.id === el.dataset.id);
+        if (item) { closeInstantPlay(); launchItem(item); }
+      });
+    });
+  }
+
+  function renderInstantRecent(kind) {
+    const container = kind === 'Games' ? instantGamesEl : instantAppsEl;
+    const recentIds = getRecent(kind);
+    if (!recentIds.length) {
+      container.innerHTML = '<span class="instant-empty">Nothing here yet</span>';
+      return;
+    }
+    const dataset = kind === 'Games' ? games : apps;
+    const recentItems = recentIds.map(id => dataset.find(i => i.id === id)).filter(Boolean);
+    container.innerHTML = recentItems.map(item => `
+      <div class="instant-item" data-id="${item.id}">
+        <img src="${item.img}" alt="${item.name}" onerror="handleImgError(this)">
+        <span class="instant-name">${item.name}</span>
+      </div>
+    `).join('');
+    container.querySelectorAll('.instant-item').forEach(el => {
+      el.addEventListener('click', () => {
+        const item = dataset.find(i => i.id === el.dataset.id);
+        if (item) { closeInstantPlay(); launchItem(item); }
+      });
+    });
+  }
+
+  function renderInstantPanels() {
+    renderInstantFavorites();
+    renderInstantRecent('Games');
+    renderInstantRecent('Apps');
+  }
+
+  if (instantPlayBtn) {
+    instantPlayBtn.addEventListener('click', () => {
+      if (instantOverlay.classList.contains('active')) {
+        closeInstantPlay();
+        return;
+      }
+      renderInstantPanels();
+      instantOverlay.classList.add('active');
+      document.body.classList.add('instant-open');
+    });
+  }
+  if (instantCloseBtn) {
+    instantCloseBtn.addEventListener('click', closeInstantPlay);
+  }
+  if (instantOverlay) {
+    instantOverlay.addEventListener('click', (e) => {
+      if (e.target === instantOverlay) closeInstantPlay();
+    });
+  }
+  if (instantSearchBar) {
+    instantSearchBar.addEventListener('keydown', async (e) => {
+      if (e.key === 'Enter') {
+        const val = instantSearchBar.value.trim();
+        if (!val) return;
+        closeInstantPlay();
+        await browserOpen(val);
+      }
+    });
+  }
+  document.querySelectorAll('.instant-ql').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      closeInstantPlay();
+      await browserOpen(btn.dataset.url);
+    });
+  });
+
+  /* Step 1: simple mode + reduce motion pre-init (before applyTheme) */
+  function applySimpleMode() {
+    document.body.classList.toggle('simple-mode', localStorage.getItem('simpleMode') === 'true');
+    if (simpleModeToggle) simpleModeToggle.checked = localStorage.getItem('simpleMode') === 'true';
+  }
+
+  function applyReduceMotion() {
+    document.body.classList.toggle('reduce-motion', localStorage.getItem('reduceMotion') === 'true');
+    if (reduceMotionToggle) reduceMotionToggle.checked = localStorage.getItem('reduceMotion') === 'true';
+  }
+
+  if (simpleModeToggle) {
+    simpleModeToggle.addEventListener('change', () => {
+      localStorage.setItem('simpleMode', simpleModeToggle.checked ? 'true' : 'false');
+      applySimpleMode();
+    });
+  }
+  if (reduceMotionToggle) {
+    reduceMotionToggle.addEventListener('change', () => {
+      localStorage.setItem('reduceMotion', reduceMotionToggle.checked ? 'true' : 'false');
+      applyReduceMotion();
+    });
+  }
+
+  function applyBigIframes() {
+    document.body.classList.toggle('big-iframes', localStorage.getItem('bigIframes') === 'true');
+    if (bigIframesToggle) bigIframesToggle.checked = localStorage.getItem('bigIframes') === 'true';
+  }
+
+  if (bigIframesToggle) {
+    bigIframesToggle.addEventListener('change', () => {
+      localStorage.setItem('bigIframes', bigIframesToggle.checked ? 'true' : 'false');
+      applyBigIframes();
+    });
+  }
+
+  /* Screen recorder */
+  let mediaRecorder = null;
+  let mediaStream = null;
+  let recordingChunks = [];
+
+  const recStartBtn = document.getElementById('recStart');
+  const recStopBtn = document.getElementById('recStop');
+  const recStatusEl = document.getElementById('recStatus');
+  const recVideoEl = document.getElementById('recVideo');
+  const recDownloadEl = document.getElementById('recDownload');
+
+  function stopRecording() {
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
+  }
+
+  if (recStartBtn) {
+    recStartBtn.addEventListener('click', async () => {
+      try {
+        mediaStream = await navigator.mediaDevices.getDisplayMedia({ video: { cursor: 'always' }, audio: false });
+        recordingChunks = [];
+        mediaRecorder = new MediaRecorder(mediaStream);
+        mediaRecorder.ondataavailable = (e) => { if (e.data.size > 0) recordingChunks.push(e.data); };
+        mediaRecorder.onstop = () => {
+          const blob = new Blob(recordingChunks, { type: 'video/webm' });
+          recVideoEl.src = URL.createObjectURL(blob);
+          recVideoEl.style.display = 'block';
+          recDownloadEl.href = recVideoEl.src;
+          recDownloadEl.style.display = 'inline-block';
+          recStatusEl.textContent = 'Recording saved';
+        };
+        mediaRecorder.start();
+        recStartBtn.disabled = true;
+        recStopBtn.disabled = false;
+        recStatusEl.textContent = 'Recording…';
+        mediaStream.getTracks().forEach(track => {
+          track.addEventListener('ended', () => {
+            if (mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
+          });
+        });
+      } catch (err) {
+        recStatusEl.textContent = 'Recording unavailable: ' + err.message;
+      }
+    });
+  }
+
+  if (recStopBtn) {
+    recStopBtn.addEventListener('click', () => {
+      if (mediaStream) mediaStream.getTracks().forEach(track => track.stop());
+      stopRecording();
+      recStartBtn.disabled = false;
+      recStopBtn.disabled = true;
+    });
+  }
+
+  /* Particles toggle */
+  function applyParticlesToggleState() {
+    if (particlesToggle) particlesToggle.checked = localStorage.getItem('particlesDisabled') === 'true';
+  }
+
+  if (particlesToggle) {
+    particlesToggle.addEventListener('change', () => {
+      localStorage.setItem('particlesDisabled', particlesToggle.checked ? 'true' : 'false');
+      applyParticlesState();
+    });
+  }
+
   loadLogo();
   applyTheme(currentTheme);
-  loadKeybind();
+  applyNavPosition();
+  applySimpleMode();
+  applyReduceMotion();
+  applyBigIframes();
+  applyParticlesToggleState();
+  setRandomTagline();
   renderRecentGames();
   renderRecentApps();
   renderFavorites();
+  renderInstantPanels();
   navigateTo('home', true);
 
   console.log('🐇');

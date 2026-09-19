@@ -37,7 +37,7 @@ app.get("/discord", (req, res) => {
 // Serve Bunnies website
 app.use(
   express.static(path.join(__dirname, "public"), {
-    maxAge: "7d"
+    maxAge: 0
   })
 );
 
