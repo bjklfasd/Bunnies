@@ -518,7 +518,6 @@ body {
 }
 .game-iframe-overlay.active {
   display: flex;
-  animation: overlayFadeIn 0.3s ease;
 }
 .game-iframe-container {
   width: 100%;
@@ -530,19 +529,6 @@ body {
   position: relative;
   border: 2px solid var(--border-color);
   box-shadow: 0 30px 80px var(--shadow-color);
-  animation: slideInSide 0.35s ease;
-}
-@keyframes overlayFadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-@keyframes slideInSide {
-  0% { transform: translateX(120%); }
-  100% { transform: translateX(0); }
-}
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
 }
 .game-iframe-container iframe {
   width: 100%;
@@ -1422,12 +1408,6 @@ body.nav-top .instant-fab:active {
 }
 .instant-overlay.active .instant-panel {
   transform: translateX(0);
-  animation: instantPopIn 0.45s cubic-bezier(0.22, 1.2, 0.36, 1);
-}
-@keyframes instantPopIn {
-  0% { transform: translateX(120%) scale(0.92); opacity: 0; }
-  60% { opacity: 1; }
-  100% { transform: translateX(0) scale(1); opacity: 1; }
 }
 .instant-header {
   display: flex;
@@ -1772,29 +1752,6 @@ body.nav-top .main-content {
   min-height: 0;
   padding: 20px;
 }
-/* Instant Play in horizontal mode (navbar on top) */
-body.nav-top .instant-overlay {
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-body.nav-top .instant-panel {
-  width: 100%;
-  max-width: none;
-  height: min(420px, 92vh);
-  border-left: none;
-  border-top: 1px solid var(--border-color);
-  box-shadow: 0 -20px 60px var(--shadow-color);
-  transform: translateY(100%);
-}
-body.nav-top .instant-overlay.active .instant-panel {
-  transform: translateY(0);
-  animation: instantPopUp 0.45s cubic-bezier(0.22, 1.2, 0.36, 1);
-}
-@keyframes instantPopUp {
-  0% { transform: translateY(100%) scale(0.96); opacity: 0; }
-  60% { opacity: 1; }
-  100% { transform: translateY(0) scale(1); opacity: 1; }
-}
 @media (max-width: 700px) {
   body.nav-top .side-nav {
     padding: 0 12px;
@@ -1808,28 +1765,6 @@ body.nav-top .instant-overlay.active .instant-panel {
 body.big-iframes .game-iframe-container {
   max-width: 1300px;
   height: 92%;
-}
-
-/* ===== Fades (Animation Settings) ===== */
-body.fades-enabled .popup-box {
-  animation: fadeIn 0.25s ease;
-}
-body.fades-enabled .instant-panel {
-  opacity: 0;
-  transform: none;
-  transition: opacity 0.3s ease;
-  animation: none;
-}
-body.fades-enabled .instant-overlay.active .instant-panel {
-  opacity: 1;
-  transform: none;
-  animation: none;
-}
-body.fades-enabled .game-iframe-overlay.active {
-  animation: overlayFadeIn 0.3s ease;
-}
-body.fades-enabled .game-iframe-container {
-  animation: fadeIn 0.35s ease;
 }
 
 /* ===== Theme Share ===== */
