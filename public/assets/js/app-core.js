@@ -1339,6 +1339,7 @@
   const simpleModeToggle = document.getElementById('simpleModeToggle');
   const reduceMotionToggle = document.getElementById('reduceMotionToggle');
   const bigIframesToggle = document.getElementById('bigIframesToggle');
+  const fadesToggle = document.getElementById('fadesToggle');
 
   function closeInstantPlay() {
     instantOverlay.classList.remove('active');
@@ -1473,6 +1474,18 @@
     });
   }
 
+  function applyFades() {
+    document.body.classList.toggle('fades-enabled', localStorage.getItem('fadesEnabled') === 'true');
+    if (fadesToggle) fadesToggle.checked = localStorage.getItem('fadesEnabled') === 'true';
+  }
+
+  if (fadesToggle) {
+    fadesToggle.addEventListener('change', () => {
+      localStorage.setItem('fadesEnabled', fadesToggle.checked ? 'true' : 'false');
+      applyFades();
+    });
+  }
+
   /* Screen recorder */
   let mediaRecorder = null;
   let mediaStream = null;
@@ -1545,6 +1558,7 @@ particlesToggle.addEventListener('change', () => {
   applySimpleMode();
   applyReduceMotion();
   applyBigIframes();
+  applyFades();
   applyParticlesToggleState();
   setRandomTagline();
   renderRecentGames();
