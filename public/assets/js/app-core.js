@@ -1533,9 +1533,9 @@
   }
 
   if (particlesToggle) {
-    particlesToggle.addEventListener('change', () => {
+particlesToggle.addEventListener('change', () => {
       localStorage.setItem('particlesDisabled', particlesToggle.checked ? 'true' : 'false');
-      applyParticlesState();
+      applyParticlesToggleState();
     });
   }
 
@@ -1551,6 +1551,11 @@
   renderRecentApps();
   renderFavorites();
   renderInstantPanels();
+  if (sessionStorage.getItem('bunniesReloadInstant')) {
+    sessionStorage.removeItem('bunniesReloadInstant');
+
+    openInstantPlay();
+  }
   navigateTo('home', true);
 
   console.log('🐇');
