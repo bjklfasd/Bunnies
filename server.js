@@ -179,7 +179,7 @@ async function proxyRequest(req, res) {
 
 // Discord redirect
 app.get("/discord", (req, res) => {
-  res.redirect("https://discord.gg/9QC5HVwMMj");
+  res.redirect("https://discord.gg/zYBtECpeqU");
 });
 
 /*
