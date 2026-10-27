@@ -1,0 +1,17 @@
+[
+  {
+    "title": "YouTube",
+    "image": "/assets/apps/yt.png",
+    "url": "https://youtube.com"
+  },
+  {
+    "title": "TikTok",
+    "image": "/assets/apps/tt.jpeg",
+    "url": "https://tiktok.com"
+  },
+  {
+    "title": "AO3",
+    "image": "/assets/apps/ao3.svg",
+    "url": "https://archiveofourown.org"
+  }
+]

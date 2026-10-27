@@ -1,88 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404 — Bunnies</title>
-<link rel="icon" type="image/x-icon" href="/assets/images/bunnies.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/main.css">
-<style>
-  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg-primary); font-family: var(--site-font, 'Poppins', sans-serif); overflow: hidden; }
-  #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
-  .error-container { position: relative; z-index: 1; text-align: center; max-width: 500px; padding: 40px; }
-  .error-code { font-size: 7rem; font-weight: 700; color: var(--text-accent); line-height: 1; margin: 0; opacity: 0.8; }
-  .error-title { font-size: 1.4rem; color: var(--text-secondary); margin: 8px 0 20px; }
-  .error-desc { color: var(--text-secondary); opacity: 0.6; font-size: 0.95rem; margin-bottom: 30px; line-height: 1.6; }
-  .error-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .error-btn { padding: 12px 28px; border-radius: 60px; border: none; cursor: pointer; font-family: inherit; font-size: 0.95rem; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: 0.15s; text-decoration: none; }
-  .error-btn.primary { background: var(--text-accent); color: var(--bg-primary); }
-  .error-btn.primary:hover { opacity: 0.85; }
-  .error-btn.secondary { background: rgba(255,255,255,0.06); color: var(--text-primary); border: 1px solid var(--border-color); }
-  .error-btn.secondary:hover { background: rgba(255,255,255,0.1); }
-  .error-bunny { font-size: 3rem; margin-bottom: 10px; display: block; }
-</style>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GJCH2QLBGR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GJCH2QLBGR');
+    </script>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bunnies - 404</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/404.css" />
+      <meta property="og:title" content="Log in to Schoology">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="google-site-verification" content="6ystVr7sfpd20ctZGukFGunzOJQW7O6kJpXvzAxSEzI">
+    <meta name="google-site-verification" content="9tK81P_TYDOlOx_Me0FXzEj_nQnkL9G0kQxRcG4LT7I">
+    <meta name="p:domain_verify" content="d76e189f546bfd185bd2a3ec1a7f214c">
+    <meta name="description" content="Schoology allows instructors, students and administrators to create a meaningful virtual classroom and extend learning beyond the boundaries of the physical classroom">
 </head>
-<body>
-  <div id="particles-js"></div>
-  <div class="error-container">
-    <span class="error-bunny"><img id="errorLogo" src="/assets/images/bunnies.png" style="width:64px;height:64px;border-radius:16px;"></span>
-    <h1 class="error-code">404</h1>
-    <p class="error-title">This page hopped away!</p>
-    <p class="error-desc">The page you're looking for doesn't exist or was moved. Try going back home or reloading.</p>
-    <div class="error-actions">
-      <a href="/" class="error-btn primary"><i class="fas fa-house"></i> Go Home</a>
-      <button class="error-btn secondary" id="reloadBtn"><i class="fas fa-rotate"></i> Reload</button>
+  <body>
+    <div class="loading-screen" id="loading-screen">
+      <img src="assets/images/bunnies.png" alt="Bunnies logo" class="loading-logo" />
+      <div class="loading-text" id="loading-text">Bunnies</div>
     </div>
-  </div>
+    <div class="stars"></div>
 
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script>
-    particlesJS('particles-js', {
-      particles: {
-        number: { value: 50, density: { enable: true, value_area: 800 } },
-        color: { value: "#b7a0c9" },
-        shape: { type: "circle" },
-        opacity: { value: 0.3, random: true },
-        size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 150, color: "#9370b3", opacity: 0.15, width: 1 },
-        move: { enable: true, speed: 1.5, direction: "none", random: true, straight: false, out_mode: "out" }
-      },
-      interactivity: {
-        events: { onhover: { enable: true, mode: "repulse" } }
-      }
-    });
+    <div class="app-layout">
+      <main>
+        <div class="error-code">404</div>
+        <div class="error-message">Page Not Found</div>
+        <div class="error-details" id="errorDetails">
+          This may be due to the proxy failing to load, or the game/app you're trying to access (like Roblox, Fortnite, or other cloud games or proxied apps) may not be available through this connection.
+        </div>
+        <button class="reload-btn" onclick="location.reload()">
+          <i class="fa-solid fa-rotate-right"></i>
+          Reload
+        </button>
+      </main>
+    </div>
 
-    document.getElementById('reloadBtn').addEventListener('click', () => location.reload());
-
-    async function registerUV() {
-      try {
-        if (typeof __uv$config !== 'undefined' && 'serviceWorker' in navigator) {
-          await navigator.serviceWorker.register('/fetch/sw.js', { scope: __uv$config.prefix });
-        }
-      } catch {}
-    }
-
-    const savedFavicon = localStorage.getItem('cloakFavicon');
-    const savedTitle = localStorage.getItem('cloakTitle');
-    if (savedFavicon) {
-      let link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-      link.type = 'image/x-icon'; link.rel = 'shortcut icon'; link.href = savedFavicon;
-      document.head.appendChild(link);
-    }
-    if (savedTitle) document.title = savedTitle;
-
-    const theme = localStorage.getItem('selectedTheme');
-    if (theme && theme !== 'default') {
-      document.documentElement.classList.add('theme-' + theme);
-    }
-
-    const savedLogo = localStorage.getItem('customLogo');
-    const logoImg = document.getElementById('errorLogo');
-    if (savedLogo) logoImg.src = savedLogo;
-
-    registerUV();
-  </script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/cloak.js"></script>
+    <script src="assets/js/common.js"></script>
+      <script src="https://pl30404457.effectivecpmnetwork.com/4b/d2/e0/4bd2e0433588e2fb9d8c999fbd936f74.js"></script>
+    <script src="https://pl30404458.effectivecpmnetwork.com/e6/3a/4f/e63a4fd321c6583dd16a9578d731ae66.js"></script>
 </body>
 </html>

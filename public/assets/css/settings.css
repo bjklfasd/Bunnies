@@ -1,0 +1,104 @@
+.settings-container {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.settings-section {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.8rem;
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.02), transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.settings-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+}
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.theme-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 150ms ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.theme-card:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.03);
+}
+.theme-card.active {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+.theme-preview {
+  height: 60px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.theme-name {
+  font-weight: 500;
+}
+.cloak-select {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+  font-family: 'Lexend', system-ui, sans-serif;
+}
+.cloak-input {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+  font-family: 'Lexend', system-ui, sans-serif;
+}
+.cloak-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  opacity: 0.8;
+}
+.cloak-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-family: 'Lexend', system-ui, sans-serif;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cloak-btn.secondary {
+  background: rgba(255, 255, 255, 0.03);
+}
+.cloak-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.cloak-btn-group {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}

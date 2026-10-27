@@ -1,0 +1,377 @@
+[
+  {
+    "title": "Roblox",
+    "image": "/assets/games/roblox/roblox.png",
+    "url": "https://nowgg.fun/apps/a/19900/b.html"
+  },
+  {
+    "title": "Fortnite",
+    "image": "/assets/games/fortnite/fortnite.png",
+    "url": "https://nowgg.fun/apps/aptoide/5874/aptoide.html"
+  },
+  {
+    "title": "LOLBeans",
+    "image": "/assets/games/lolbeans/lolbeans.jpg",
+    "url": "https://bean.lol"
+  },
+  {
+    "title": "Geometry Dash",
+    "image": "/assets/games/geo/geometrydash.png",
+    "url": "https://truffled.lol/games/geo/index.html"
+  },
+  {
+    "title": "1 Date Danger",
+    "image": "/assets/games/1datedanger/logo.png",
+    "url": "/assets/games/1datedanger/"
+  },
+  {
+    "title": "BFDIA 5b",
+    "image": "/assets/games/bfdia5b/637.png",
+    "url": "/assets/games/bfdia5b/"
+  },
+  {
+    "title": "Hollow Knight",
+    "image": "/assets/games/hollowknight/468.png",
+    "url": "/assets/games/hollowknight/"
+  },
+  {
+    "title": "Omori",
+    "image": "/assets/games/omori/427.png",
+    "url": "/assets/games/omori/"
+  },
+  {
+    "title": "OneShot",
+    "image": "/assets/games/oneshot/622.png",
+    "url": "/assets/games/oneshot/"
+  },
+  {
+    "title": "Silk Song",
+    "image": "/assets/games/silksong/771.png",
+    "url": "/assets/games/silksong/"
+  },
+  {
+    "title": "Animal Crossing (GAMECUBE)",
+    "image": "/assets/games/animalcrossing/828.png",
+    "url": "/assets/games/animalcrossing/"
+  },
+  {
+    "title": "Eaglercraft 1.8",
+    "image": "/assets/games/eaglercraft1122/minecrafteagle.png",
+    "url": "/assets/games/eaglercraft18/"
+  },
+  {
+    "title": "Eaglercraft 1.12.2",
+    "image": "/assets/games/eaglercraft1122/minecrafteagle.png",
+    "url": "/assets/games/eaglercraft1122/"
+  },
+  {
+    "title": "BlockPost",
+    "image": "/assets/games/blockpost/273.png",
+    "url": "/assets/games/blockpost/"
+  },
+  {
+    "title": "OvO",
+    "image": "/assets/games/ovo/1.png",
+    "url": "/assets/games/ovo/"
+  },
+  {
+    "title": "OvO 2",
+    "image": "/assets/games/ovo2/2.png",
+    "url": "/assets/games/ovo2/"
+  },
+  {
+    "title": "OvO 3",
+    "image": "/assets/games/ovo3/3.png",
+    "url": "/assets/games/ovo3/"
+  },
+  {
+    "title": "Bad Parenting",
+    "image": "/assets/games/badparenting/166.png",
+    "url": "/assets/games/badparenting/"
+  },
+  {
+    "title": "Tattletail",
+    "image": "/assets/games/tattletail/607.png",
+    "url": "/assets/games/tattletail/"
+  },
+  {
+    "title": "Ultrakill",
+    "image": "/assets/games/ultrakill/196.png",
+    "url": "/assets/games/ultrakill/"
+  },
+  {
+    "title": "Half Life",
+    "image": "/assets/games/halflife/262.png",
+    "url": "/assets/games/halflife/"
+  },
+  {
+    "title": "Terraria",
+    "image": "/assets/games/terraria/669.png",
+    "url": "/assets/games/terraria/"
+  },
+  {
+    "title": "Just Shapes & Beats",
+    "image": "/assets/games/justshapes/826.png",
+    "url": "/assets/games/justshapes/"
+  },
+  {
+    "title": "FNAE",
+    "image": "/assets/games/fivenightsatepsteins/710.png",
+    "url": "/assets/games/fivenightsatepsteins/"
+  },
+  {
+    "title": "Iron Lung",
+    "image": "/assets/games/ironlung/705.png",
+    "url": "/assets/games/ironlung/"
+  },
+  {
+    "title": "Cooking Mama",
+    "image": "/assets/games/cookingmama/cookingmama.png",
+    "url": "/assets/games/cookingmama/"
+  },
+  {
+    "title": "20 Minutes Till Dawn",
+    "image": "/assets/games/20minutestildawn/819.png",
+    "url": "/assets/games/20minutestildawn/"
+  },
+  {
+    "title": "2048",
+    "image": "/assets/games/2048/114.png",
+    "url": "/assets/games/2048/2048.html"
+  },
+  {
+    "title": "2048 Merge Run",
+    "image": "/assets/games/2048mergerun/375.png",
+    "url": "/assets/games/2048mergerun/"
+  },
+  {
+    "title": "T.A.B.S",
+    "image": "/assets/games/tabs/827.png",
+    "url": "/assets/games/tabs/"
+  },
+  {
+    "title": "Bad Time Simulator",
+    "image": "/assets/games/badtimesimulator/472.png",
+    "url": "/assets/games/badtimesimulator/"
+  },
+  {
+    "title": "Slope",
+    "image": "/assets/games/slope/198.png",
+    "url": "/assets/games/slope/"
+  },
+  {
+    "title": "Slope 2",
+    "image": "/assets/games/slope2/368.png",
+    "url": "/assets/games/slope2/"
+  },
+  {
+    "title": "Slowroads",
+    "image": "/assets/games/slowroads/369.png",
+    "url": "/assets/games/slowroads/"
+  },
+  {
+    "title": "FNF Shucks",
+    "image": "/assets/games/shucks/836.png",
+    "url": "/assets/games/shucks/"
+  },
+  {
+    "title": "FNF Pibby Corrupted",
+    "image": "/assets/games/pibbycorrupted/700.png",
+    "url": "/assets/games/pibbycorrupted/"
+  },
+  {
+    "title": "FNF Bobs Onslaught",
+    "image": "/assets/games/bobsonslaught/618.png",
+    "url": "/assets/games/bobsonslaught/"
+  },
+  {
+    "title": "FNF Wedndesdays Infidelity",
+    "image": "/assets/games/wednesdaysinfidelity/616.png",
+    "url": "/assets/games/wednesdaysinfidelity/"
+  },
+  {
+    "title": "FNF Dave and Bambi",
+    "image": "/assets/games/daveandbambi/615.png",
+    "url": "/assets/games/daveandbambi/"
+  },
+  {
+    "title": "FNF Sonic.exe",
+    "image": "/assets/games/sonicexe/601.png",
+    "url": "/assets/games/sonicexe/"
+  },
+  {
+    "title": "Famidash",
+    "image": "/assets/games/famidash/famidash.png",
+    "url": "/assets/games/famidash/"
+  },
+  {
+    "title": "Cookie Clicker",
+    "image": "/assets/games/cookieclicker/82.png",
+    "url": "/assets/games/cookieclicker/"
+  },
+  {
+    "title": "Jetpack Joyride",
+    "image": "/assets/games/jetpackjoyride/7.png",
+    "url": "/assets/games/jetpackjoyride/"
+  },
+  {
+    "title": "Stickman Hook",
+    "image": "/assets/games/stickmanhook/11.png",
+    "url": "/assets/games/stickmanhook/"
+  },
+  {
+    "title": "Bridge Race",
+    "image": "/assets/games/bridgerace/14.png",
+    "url": "/assets/games/bridgerace/"
+  },
+  {
+    "title": "Attack Hole",
+    "image": "/assets/games/attackhole/13.png",
+    "url": "/assets/games/attackhole/"
+  },
+  {
+    "title": "Achievement Unlocked",
+    "image": "/assets/games/achievementunlocked/60.png",
+    "url": "/assets/games/achievementunlocked/"
+  },
+  {
+    "title": "Achievement Unlocked 2",
+    "image": "/assets/games/achievementunlocked2/61.png",
+    "url": "/assets/games/achievementunlocked2/"
+  },
+  {
+    "title": "Achievement Unlocked 3",
+    "image": "/assets/games/achievementunlocked3/62.png",
+    "url": "/assets/games/achievementunlocked3/"
+  },
+  {
+    "title": "FNF Twiddlefinger",
+    "image": "/assets/games/twiddlefinger/500.png",
+    "url": "/assets/games/twiddlefinger/"
+  },
+  {
+    "title": "8 Ball Pool",
+    "image": "/assets/games/8ballpool/115.png",
+    "url": "/assets/games/8ballpool/"
+  },
+  {
+    "title": "Awesome Tanks",
+    "image": "/assets/games/awesometanks/436.png",
+    "url": "/assets/games/awesometanks/"
+  },
+  {
+    "title": "Awesome Tanks 2",
+    "image": "/assets/games/awesometanks2/438.png",
+    "url": "/assets/games/awesometanks2/"
+  },
+  {
+    "title": "Bad Ice Cream",
+    "image": "/assets/games/badicecream/269.png",
+    "url": "/assets/games/badicecream/"
+  },
+  {
+    "title": "Bad Ice Cream 2",
+    "image": "/assets/games/badicecream2/270.png",
+    "url": "/assets/games/badicecream2/"
+  },
+  {
+    "title": "Bad Ice Cream 3",
+    "image": "/assets/games/badicecream3/271.png",
+    "url": "/assets/games/badicecream3/"
+  },
+  {
+    "title": "Bowmasters",
+    "image": "/assets/games/bowmasters/cover.png",
+    "url": "/assets/games/bowmasters/"
+  },
+  {
+    "title": "Temple Run 2",
+    "image": "/assets/games/temple-run-2/cover.png",
+    "url": "/assets/games/temple-run-2/"
+  },
+  {
+    "title": "Ninja vs EVILCORP",
+    "image": "/assets/games/ninja-vs-evilcorp/cover.png",
+    "url": "/assets/games/ninja-vs-evilcorp/"
+  },
+  {
+    "title": "2048",
+    "image": "/assets/games/2048-gn/cover.png",
+    "url": "/assets/games/2048-gn/"
+  },
+  {
+    "title": "8 Ball Pool",
+    "image": "/assets/games/8-ball-pool/cover.png",
+    "url": "/assets/games/8-ball-pool/"
+  },
+  {
+    "title": "8 Ball Billiards Classic",
+    "image": "/assets/games/8-ball-billiards-classic/cover.png",
+    "url": "/assets/games/8-ball-billiards-classic/"
+  },
+  {
+    "title": "Angry Birds Showdown",
+    "image": "/assets/games/angry-birds-showdown/cover.png",
+    "url": "/assets/games/angry-birds-showdown/"
+  },
+  {
+    "title": "Time Shooter 2",
+    "image": "/assets/games/time-shooter-2/cover.png",
+    "url": "/assets/games/time-shooter-2/"
+  },
+  {
+    "title": "Money Roller",
+    "image": "/assets/games/money-roller/cover.png",
+    "url": "/assets/games/money-roller/"
+  },
+  {
+    "title": "ColorWaterSort3D",
+    "image": "/assets/games/colorwatersort3d/cover.png",
+    "url": "/assets/games/colorwatersort3d/"
+  },
+  {
+    "title": "Turbo Stars",
+    "image": "/assets/games/turbo-stars/cover.png",
+    "url": "/assets/games/turbo-stars/"
+  },
+  {
+    "title": "Mob control",
+    "image": "/assets/games/mob-control/cover.png",
+    "url": "/assets/games/mob-control/"
+  },
+  {
+    "title": "Pou",
+    "image": "/assets/games/pou/cover.png",
+    "url": "/assets/games/pou/"
+  },
+  {
+    "title": "Crossy Road",
+    "image": "/assets/games/crossy-road/cover.png",
+    "url": "/assets/games/crossy-road/"
+  },
+  {
+    "title": "Play Basketball FRVR",
+    "image": "/assets/games/play-basketball-frvr/cover.png",
+    "url": "/assets/games/play-basketball-frvr/"
+  },
+  {
+    "title": "Bottle Jump 3D",
+    "image": "/assets/games/bottle-jump-3d/cover.png",
+    "url": "/assets/games/bottle-jump-3d/"
+  },
+  {
+    "title": "Retro Bowl",
+    "image": "/assets/games/retro-bowl/cover.png",
+    "url": "/assets/games/retro-bowl/"
+  },
+  {
+    "title": "Vex 5",
+    "image": "/assets/games/vex-5/cover.png",
+    "url": "/assets/games/vex-5/"
+  },
+  {
+    "title": "BitLife",
+    "image": "/assets/games/bitlife/cover.png",
+    "url": "/assets/games/bitlife/"
+  }
+]
