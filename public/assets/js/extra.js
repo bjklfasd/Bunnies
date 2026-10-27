@@ -18,12 +18,22 @@ function proxyUrl(url) {
   if (url.startsWith('/') || url.startsWith('./') || url.startsWith('../') || url.startsWith('data:') || url.startsWith('blob:')) {
     return url;
   }
-  if (typeof window.__uv$config !== 'undefined' && window.__uv$config.prefix && window.__uv$config.encodeUrl) {
-    return window.__uv$config.prefix + window.__uv$config.encodeUrl(url);
-  }
-  if (typeof __uv$config !== 'undefined') {
-    return __uv$config.prefix + __uv$config.encodeUrl(url);
-  }
+  try {
+    const cfg = window.__uv$config || self.__uv$config;
+    if (cfg && cfg.prefix && typeof cfg.encodeUrl === 'function') {
+      return cfg.prefix + cfg.encodeUrl(url);
+    }
+  } catch (e) {}
+  try {
+    if (typeof __uv$config !== 'undefined' && __uv$config.prefix && typeof __uv$config.encodeUrl === 'function') {
+      return __uv$config.prefix + __uv$config.encodeUrl(url);
+    }
+  } catch (e) {}
+  try {
+    if (typeof UVConfig !== 'undefined' && UVConfig.prefix && typeof UVConfig.encodeUrl === 'function') {
+      return UVConfig.prefix + UVConfig.encodeUrl(url);
+    }
+  } catch (e) {}
   return url;
 }
 
