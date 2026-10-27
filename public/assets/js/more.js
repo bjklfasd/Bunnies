@@ -124,6 +124,33 @@ if (browserFrame) {
         document.title = iframeDoc.title + ' - Bunnies';
       }
     } catch(e) {}
+    try {
+      // Try to get current URL from iframe
+      const iframeWindow = browserFrame.contentWindow;
+      if (iframeWindow && iframeWindow.location) {
+        const loc = iframeWindow.location.href;
+        if (loc && loc !== 'about:blank') {
+          // Try to decode UV URL
+          try {
+            const cfg = window.__uv$config || (typeof __uv$config !== 'undefined' ? __uv$config : null);
+            if (cfg && cfg.prefix && loc.includes(cfg.prefix)) {
+              const encoded = loc.substring(loc.indexOf(cfg.prefix) + cfg.prefix.length);
+              if (typeof cfg.decodeUrl === 'function') {
+                const decoded = cfg.decodeUrl(encoded);
+                browserUrlInput.value = decoded;
+                localStorage.setItem('bunnies-more-url', decoded);
+              } else {
+                browserUrlInput.value = loc;
+              }
+            } else {
+              browserUrlInput.value = loc;
+            }
+          } catch(e) {
+            browserUrlInput.value = loc;
+          }
+        }
+      }
+    } catch(e) {}
   });
 }
 
