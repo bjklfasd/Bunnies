@@ -19,21 +19,28 @@ function proxyUrl(url) {
     return url;
   }
   try {
-    const cfg = window.__uv$config || self.__uv$config;
-    if (cfg && cfg.prefix && typeof cfg.encodeUrl === 'function') {
-      return cfg.prefix + cfg.encodeUrl(url);
+    if (window.__uv$config && typeof window.__uv$config.encodeUrl === 'function') {
+      return window.__uv$config.prefix + window.__uv$config.encodeUrl(url);
     }
   } catch (e) {}
   try {
-    if (typeof __uv$config !== 'undefined' && __uv$config.prefix && typeof __uv$config.encodeUrl === 'function') {
+    if (typeof __uv$config !== 'undefined' && typeof __uv$config.encodeUrl === 'function') {
       return __uv$config.prefix + __uv$config.encodeUrl(url);
     }
   } catch (e) {}
   try {
-    if (typeof UVConfig !== 'undefined' && UVConfig.prefix && typeof UVConfig.encodeUrl === 'function') {
-      return UVConfig.prefix + UVConfig.encodeUrl(url);
+    if (typeof UV !== 'undefined' && UV.codec && UV.codec.xor) {
+      // Try direct UV usage
     }
   } catch (e) {}
+  // Force proxy for http(s)
+  if (url.startsWith('http')) {
+    try {
+      if (window.__uv$config) {
+        return window.__uv$config.prefix + window.__uv$config.encodeUrl(url);
+      }
+    } catch (e) {}
+  }
   return url;
 }
 
