@@ -24,9 +24,8 @@ if (homeSearchForm && homeSearchInput) {
     if (!query.startsWith('http://') && !query.startsWith('https://')) {
       query = 'https://duckduckgo.com/?q=' + encodeURIComponent(query);
     }
-    localStorage.setItem('bunnies-extra-url', query);
-    localStorage.setItem('bunnies-extra-name', query);
-    window.location.href = 'extra.html';
+    localStorage.setItem('bunnies-more-url', query);
+    window.location.href = 'more.html';
   });
 }
 
