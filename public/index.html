@@ -1,430 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GJCH2QLBGR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-GJCH2QLBGR');
-</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bunnies</title>
-<link rel="icon" type="image/x-icon" href="/assets/images/bunnies.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/main.css?v=16">
-<meta property="og:title" content="Log in to Schoology">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="google-site-verification" content="6ystVr7sfpd20ctZGukFGunzOJQW7O6kJpXvzAxSEzI">
-<meta name="google-site-verification" content="9tK81P_TYDOlOx_Me0FXzEj_nQnkL9G0kQxRcG4LT7I">
-<meta name="p:domain_verify" content="d76e189f546bfd185bd2a3ec1a7f214c">
-<meta name="description" content="Schoology allows instructors, students and administrators to create a meaningful virtual classroom and extend learning beyond the boundaries of the physical classroom">
-</head>
-<body>
-
-  <div id="particles-js"></div>
-
-  <div class="app-wrapper">
-
-    <nav class="side-nav">
-      <div class="nav-image-icon" id="logoContainer">
-        <img id="navLogo" src="/assets/images/bunnies.png">
-        <span class="logo-placeholder" id="logoPlaceholder" style="display:none;"><i class="fas fa-bolt"></i></span>
-      </div>
-
-      <div class="nav-icons">
-        <button id="navHome" class="active" title="Home"><i class="fas fa-house"></i></button>
-        <button id="navGames" title="Games"><i class="fas fa-gamepad"></i></button>
-        <button id="navApps" title="Apps"><i class="fas fa-th-large"></i></button>
-        <button id="navAddons" title="Add-ons"><i class="fas fa-puzzle-piece"></i></button>
-      </div>
-
-      <div class="nav-bottom">
-        <button id="navSettings" title="Settings"><i class="fas fa-gear"></i></button>
-      </div>
-    </nav>
-
-    <div class="main-content">
-      <div class="content-card" id="contentCard">
-        <div class="card-header">
-          <h1 id="pageTitle"><i class="fas fa-bunny"></i> Bunnies</h1>
-          <div class="nav-controls">
-            <button id="navBack" title="Back"><i class="fas fa-arrow-left"></i></button>
-            <button id="navForward" title="Forward"><i class="fas fa-arrow-right"></i></button>
-            <button id="navReload" title="Reload"><i class="fas fa-rotate"></i></button>
-          </div>
-        </div>
-
-        <input type="text" class="shared-search-bar" id="sharedSearchBar" placeholder='Search...'>
-
-        <div class="content-container" id="contentContainer">
-
-          <div class="home-content" id="homeContent">
-            <div class="welcome">
-              <h2><i class="fas fa-bunny"></i> Bunnies</h2>
-              <p id="taglineText"><i class="fas fa-seedling" style="opacity:0.4;"></i> <span id="taglineWord">now better than ever!</span></p>
-              
-              <div class="social-icons">
-                <a href="/discord" id="discordLink" title="Join Discord" target="_blank">
-                  <i class="fab fa-discord"></i>
-                </a>
-                <a href="https://www.effectivecpmnetwork.com/m6f5kffz?key=0ee4bd2935616ab215beace3e13a7403" id="moneyLink" title="Shop" target="_blank">
-                  <i class="fas fa-coins"></i>
-                </a>
-              </div>
-
-              <div class="home-search-wrap">
-                <i class="fas fa-search home-search-icon"></i>
-                <input type="text" class="home-search-bar" id="homeSearchBar" placeholder='Search or type a URL...'>
-              </div>
-            </div>
-            <div class="recent-section">
-              <h3><i class="fas fa-heart"></i> Favorites</h3>
-              <div class="recent-grid" id="favoritesGrid"></div>
-            </div>
-            <div class="recent-section" style="margin-top:14px;">
-              <h3><i class="fas fa-clock"></i> Recently Played</h3>
-              <div class="recent-grid" id="recentGames"></div>
-            </div>
-            <div class="recent-section" style="margin-top:14px;">
-              <h3><i class="fas fa-clock"></i> Recently Used</h3>
-              <div class="recent-grid" id="recentApps"></div>
-            </div>
-          </div>
-
-          <div class="roster-grid" id="gamesRoster" style="display:none;"></div>
-          <div class="roster-grid" id="appsRoster" style="display:none;"></div>
-        </div>
-
-        <div class="card-footer">
-          <span class="page-indicator" id="pageIndicator"><i class="fas fa-home"></i> Home</span>
-          <span style="opacity:0.3; font-size:0.7rem;">click to launch</span>
-        </div>
-      </div>
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GJCH2QLBGR"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GJCH2QLBGR');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bunnies</title>
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css?v=16" />
+    <link rel="stylesheet" href="assets/css/home.css" />
+    <meta property="og:title" content="Log in to Schoology">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="google-site-verification" content="6ystVr7sfpd20ctZGukFGunzOJQW7O6kJpXvzAxSEzI">
+    <meta name="google-site-verification" content="9tK81P_TYDOlOx_Me0FXzEj_nQnkL9G0kQxRcG4LT7I">
+    <meta name="p:domain_verify" content="d76e189f546bfd185bd2a3ec1a7f214c">
+    <meta name="description" content="Schoology allows instructors, students and administrators to create a meaningful virtual classroom and extend learning beyond the boundaries of the physical classroom">
+  </head>
+  <body>
+    <div class="loading-screen" id="loading-screen">
+      <img src="assets/images/bunnies.png" alt="Bunnies logo" class="loading-logo" />
+      <div class="loading-text" id="loading-text">Bunnies</div>
     </div>
-  </div>
+    <div class="stars"></div>
 
-  <div class="game-iframe-overlay" id="gameIframeOverlay">
-    <div class="game-iframe-container">
-      <button class="game-iframe-close" id="gameIframeClose"><i class="fas fa-times"></i></button>
-      <button class="game-iframe-reload" id="gameIframeReload"><i class="fas fa-rotate"></i></button>
-      <button class="game-iframe-fullscreen" id="gameIframeFullscreen"><i class="fas fa-expand"></i></button>
-      <iframe id="gameIframe" src="about:blank" allowfullscreen></iframe>
+    <div class="app-layout">
+      <nav>
+        <div class="nav-top">
+          <img src="assets/images/bunnies.png" alt="Bunnies logo" class="logo-img" />
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html" title="Home"><i class="fa-solid fa-house"></i></a></li>
+          <li><a href="math.html" title="Math"><i class="fa-solid fa-gamepad"></i></a></li>
+          <li><a href="science.html" title="Science"><i class="fa-solid fa-window-maximize"></i></a></li>
+          <li><a href="settings.html" title="Options"><i class="fa-solid fa-gear"></i></a></li>
+        </ul>
+      </nav>
+
+      <main>
+      <section class="hero" id="home">
+        <h1 class="hero-title">
+          Bunnies
+          <i class="fa-solid fa-carrot hero-carrot"></i>
+        </h1>
+        <p id="hero-subtext">Learning resources and activities.</p>
+        <div class="hero-buttons">
+          <a class="hero-button discord" href="#" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-discord"></i>
+            Community
+          </a>
+          <a class="hero-button donate" href="#" target="_blank" rel="noopener noreferrer">
+            <i class="fa-solid fa-heart"></i>
+            Support
+          </a>
+        </div>
+        <div class="search-wrapper">
+          <form class="search-form" id="home-search-form">
+            <input class="search-input" type="text" id="home-search-input" placeholder="hop the web freely ;) " autocomplete="off" />
+            <button class="search-button" type="submit">
+              <i class="fa-solid fa-search"></i>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section class="grid" id="games">
+        <a class="card" href="math.html" id="mathCard">
+          <div class="card-content">
+            <h2>Math</h2>
+            <p>Math activities and problems.</p>
+            <div id="recentMathPreviews" style="display:flex; gap:6px; margin-top:10px; flex-wrap:wrap;"></div>
+          </div>
+        </a>
+        <a class="card" href="science.html" id="scienceCard">
+          <div class="card-content">
+            <h2>Science</h2>
+            <p>Science tools and resources.</p>
+            <div id="recentSciencePreviews" style="display:flex; gap:6px; margin-top:10px; flex-wrap:wrap;"></div>
+          </div>
+        </a>
+        <a class="card" href="settings.html">
+          <div class="card-content">
+            <h2>Options</h2>
+            <p>Tweak your preferences.</p>
+          </div>
+        </a>
+      </section>
+      </main>
     </div>
-  </div>
-
-  <div class="popup-overlay" id="addonPopup">
-    <div class="popup-box">
-      <button class="popup-close-x" id="closeAddonPopupX"><i class="fas fa-times"></i></button>
-      <h2><i class="fas fa-puzzle-piece"></i> Extensions</h2>
-      <p>Find and manage helpful tools</p>
-      
-      <div class="extension-item" id="iframeEmbedderExt">
-        <div class="ext-header">
-          <h3><i class="fas fa-window-maximize"></i> Iframe Embedder</h3>
-          <span style="font-size:0.8rem; opacity:0.6;">Embed any site</span>
-        </div>
-        <div class="ext-desc">Embed any website into an iframe overlay. Great for multitasking.</div>
-        <div class="ext-controls">
-          <input type="text" id="embedUrl" placeholder="https://example.com" value="https://example.com">
-          <button id="embedButton"><i class="fas fa-play"></i> Embed</button>
-        </div>
-        <div class="ext-status" id="embedStatus">Enter a URL and click Embed</div>
-      </div>
-
-      <div class="extension-item">
-        <div class="ext-header">
-          <h3><i class="fas fa-image"></i> Custom Logo</h3>
-          <span style="font-size:0.8rem; opacity:0.6;">Change the nav icon</span>
-        </div>
-        <div class="ext-desc">Upload a custom image to replace the logo in the side navigation.</div>
-        <div class="logo-section" style="margin:0; padding:0; background:transparent;">
-          <div class="logo-preview" id="logoPreview">
-            <img id="previewLogo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23231d2f'/%3E%3Ctext x='50' y='68' font-size='60' text-anchor='middle'%3E🐇%3C/text%3E%3C/svg%3E" alt="logo">
-            <span class="placeholder" style="display:none;"><i class="fas fa-bolt"></i></span>
-          </div>
-          <div class="logo-actions">
-            <button class="primary" id="uploadLogoBtn"><i class="fas fa-upload"></i> Upload Logo</button>
-            <button id="resetLogoBtn"><i class="fas fa-undo"></i> Reset</button>
-          </div>
-          <input type="file" id="logoInput" accept="image/*">
-          <div style="font-size:0.8rem; opacity:0.5; margin-top:6px;">Recommended: 50x50 PNG with transparent background</div>
-        </div>
-      </div>
-
-      <div class="extension-item">
-        <div class="ext-header">
-          <h3><i class="fas fa-font"></i> Custom Font</h3>
-          <span style="font-size:0.8rem; opacity:0.6;">Site-wide typeface</span>
-        </div>
-        <div class="ext-desc">Pick the font used across the whole site. Default is Poppins.</div>
-        <div class="ext-controls">
-          <select id="fontSelect">
-            <option value="Poppins">Poppins (default)</option>
-            <option value="Inter">Inter</option>
-            <option value="Roboto">Roboto</option>
-            <option value="Nunito">Nunito</option>
-            <option value="Montserrat">Montserrat</option>
-            <option value="Quicksand">Quicksand</option>
-            <option value="'Comic Neue'">Comic Neue</option>
-            <option value="'Space Grotesk'">Space Grotesk</option>
-          </select>
-          <button id="applyFontBtn"><i class="fas fa-check"></i> Apply</button>
-          <button id="resetFontBtn"><i class="fas fa-undo"></i> Reset</button>
-        </div>
-        <div class="ext-status" id="fontStatus">Current font: Poppins</div>
-      </div>
-
-      <div class="extension-item">
-        <div class="ext-header">
-          <h3><i class="fas fa-paint-brush"></i> Custom Theme</h3>
-          <span style="font-size:0.8rem; opacity:0.6;">Create your own</span>
-        </div>
-        <div class="ext-desc">Design your own theme with custom colors.</div>
-        <div class="custom-theme-section" style="margin:0; padding:0; background:transparent;">
-          <div class="color-row">
-            <label>Background</label>
-            <input type="color" id="customBg" value="#1a1025">
-            <input type="text" id="customBgText" placeholder="#1a1025">
-          </div>
-          <div class="color-row">
-            <label>Primary Text</label>
-            <input type="color" id="customText" value="#e8d5ff">
-            <input type="text" id="customTextText" placeholder="#e8d5ff">
-          </div>
-          <div class="color-row">
-            <label>Accent Color</label>
-            <input type="color" id="customAccent" value="#c89bff">
-            <input type="text" id="customAccentText" placeholder="#c89bff">
-          </div>
-          <div class="color-row">
-            <label>Secondary Text</label>
-            <input type="color" id="customSecondary" value="#b89fd4">
-            <input type="text" id="customSecondaryText" placeholder="#b89fd4">
-          </div>
-          <div class="theme-actions">
-            <button class="primary" id="applyCustomTheme"><i class="fas fa-check"></i> Apply Custom Theme</button>
-            <button id="resetCustomTheme"><i class="fas fa-undo"></i> Reset</button>
-          </div>
-          <div class="theme-actions share-actions">
-            <button id="exportTheme" title="Save your theme as a shareable file"><i class="fas fa-share"></i> Export</button>
-            <button id="importTheme" title="Load a shared theme file"><i class="fas fa-file-import"></i> Import</button>
-            <input type="file" id="themeImportInput" accept=".bunny,.bun,.json,application/json,text/plain" style="display:none;">
-          </div>
-          <div class="ext-status" id="themeStatus">Your custom theme will be saved automatically</div>
-        </div>
-      </div>
-
-      <button class="popup-close" id="closeAddonPopup">Close</button>
-    </div>
-  </div>
-
-  <div class="popup-overlay" id="settingsPopup">
-    <div class="popup-box">
-      <button class="popup-close-x" id="closeSettingsPopupX"><i class="fas fa-times"></i></button>
-      <h2><i class="fas fa-gear"></i> Settings</h2>
-      <p>Customize your experience</p>
-      
-      <div class="theme-selector">
-        <label><i class="fas fa-palette"></i> Select Theme</label>
-        <select id="themeSelect">
-          <option value="default">Default (Original)</option>
-          <option value="midnight-purple">Midnight</option>
-          <option value="arctic-freeze">Arctic</option>
-          <option value="forest-night">Forest</option>
-          <option value="cherry-blossom">Sakura</option>
-          <option value="cyber-neon">Hack-in</option>
-          <option value="royal-crimson">Crimson</option>
-          <option value="galaxy">Galaxy</option>
-          <option value="custom">Custom</option>
-        </select>
-      </div>
-
-      <div class="cloak-section">
-        <h3 style="display:flex;align-items:center;gap:10px;font-size:1rem;margin-bottom:10px;color:var(--text-secondary);">
-          <i class="fas fa-mask"></i> Cloaking
-          <span style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:0.75rem;">
-            <span id="cloakModeLabel" style="opacity:0.5;">Tab</span>
-            <label class="switch">
-              <input type="checkbox" id="cloakModeToggle">
-              <span class="slider"></span>
-            </label>
-            <span id="cloakModeLabelAuto">Auto</span>
-          </span>
-        </h3>
-        <label>Preset</label>
-        <select id="faviconPreset">
-          <option value="">— Custom —</option>
-          <option value="/assets/images/icons/google.ico" data-title="Google">Google</option>
-          <option value="/assets/images/icons/bing.ico" data-title="Bing">Bing</option>
-          <option value="/assets/images/icons/gmail.ico" data-title="Gmail">Gmail</option>
-          <option value="/assets/images/icons/desmos.ico" data-title="Desmos | Graphing Calculator">Desmos</option>
-          <option value="/assets/images/icons/googleclassroom.ico" data-title="Home">Google Classroom</option>
-          <option value="/assets/images/icons/wikipedia.ico" data-title="Wikipedia">Wikipedia</option>
-          <option value="/assets/images/icons/chromenewtab.ico" data-title="New Tab">Chrome New Tab</option>
-          <option value="/assets/images/icons/googledrive.ico" data-title="My Drive">Google Drive</option>
-        </select>
-        
-        <label style="margin-top:10px;">Favicon URL</label>
-        <input type="text" id="faviconInput" placeholder="https://example.com/favicon.ico">
-        
-        <label style="margin-top:10px;">Tab Title</label>
-        <input type="text" id="titleInput" placeholder="My Awesome Tab">
-        
-        <div class="cloak-actions">
-          <button id="applyCloak"><i class="fas fa-check"></i> Apply</button>
-
-          <button id="resetCloak"><i class="fas fa-undo"></i> Reset</button>
-        </div>
-      </div>
-
-      <div class="theme-selector">
-        <label><i class="fas fa-bars"></i> Nav Bar Position</label>
-        <select id="navPositionSelect">
-          <option value="left">Left (Default)</option>
-          <option value="top">Top</option>
-        </select>
-      </div>
-
-
-      </div>
-
-      <button class="popup-close" id="closeSettingsPopup">Close</button>
-    </div>
-  </div>
-
-  <div class="browser-overlay" id="browserOverlay">
-    <div class="browser-window">
-      <div class="browser-toolbar">
-        <div class="browser-tabs" id="browserTabs"></div>
-        <button class="browser-toolbar-btn" id="browserTabAdd" title="New tab"><i class="fas fa-plus"></i></button>
-        <button class="browser-toolbar-btn browser-toolbar-close" id="browserClose" title="Close browser"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="browser-nav">
-        <button class="browser-nav-btn" id="browserBack" title="Back"><i class="fas fa-arrow-left"></i></button>
-        <button class="browser-nav-btn" id="browserForward" title="Forward"><i class="fas fa-arrow-right"></i></button>
-        <button class="browser-nav-btn" id="browserReload" title="Reload"><i class="fas fa-rotate"></i></button>
-        <div class="browser-url-wrap">
-          <input type="text" class="browser-url" id="browserUrl" placeholder="Enter URL..." autocomplete="off" spellcheck="false">
-        </div>
-      </div>
-      <div class="browser-content" id="browserContent"></div>
-    </div>
-  </div>
-
-  <button id="instantFab" class="instant-fab" title="Bunnies Instant Play"><i class="fas fa-bolt"></i></button>
-
-  <div class="instant-overlay" id="instantOverlay">
-    <div class="instant-panel" id="instantPanel">
-      <div class="instant-header">
-        <h2><i class="fas fa-bolt"></i> Instant Play</h2>
-        <button class="instant-close" id="instantClose" title="Close"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="instant-body">
-
-        <div class="instant-search-wrap">
-          <i class="fas fa-search instant-search-icon"></i>
-          <input type="text" id="instantSearchBar" placeholder="Search or type a URL..." autocomplete="off">
-        </div>
-
-        <div class="instant-quicklinks">
-          <button class="instant-ql" data-url="https://www.youtube.com" title="YouTube"><i class="fab fa-youtube"></i></button>
-          <button class="instant-ql" data-url="https://www.google.com" title="Google"><i class="fab fa-google"></i></button>
-          <button class="instant-ql" data-url="https://discord.com" title="Discord"><i class="fab fa-discord"></i></button>
-          <button class="instant-ql" data-url="https://open.spotify.com" title="Spotify"><i class="fab fa-spotify"></i></button>
-          <button class="instant-ql" data-url="https://www.reddit.com" title="Reddit"><i class="fab fa-reddit-alien"></i></button>
-          <button class="instant-ql" data-url="https://www.tiktok.com" title="TikTok"><i class="fab fa-tiktok"></i></button>
-        </div>
-
-        <div class="instant-section">
-          <h3><i class="fas fa-heart"></i> Favorites</h3>
-          <div class="instant-grid" id="instantFavorites"></div>
-        </div>
-
-        <div class="instant-section">
-          <h3><i class="fas fa-clock"></i> Recently Played</h3>
-          <div class="instant-grid" id="instantGames"></div>
-        </div>
-
-        <div class="instant-section">
-          <h3><i class="fas fa-clock"></i> Recently Used</h3>
-          <div class="instant-grid" id="instantApps"></div>
-        </div>
-
-        <div class="instant-section">
-          <h3><i class="fas fa-video"></i> Screen Recorder</h3>
-          <div class="recorder-controls">
-            <button id="recStart"><i class="fas fa-circle"></i> Record</button>
-            <button id="recStop" disabled><i class="fas fa-stop"></i> Stop</button>
-            <a id="recDownload" class="rec-download" download="bunnies-recording.webm"><i class="fas fa-download"></i> Download</a>
-          </div>
-          <div class="rec-status" id="recStatus">Not recording</div>
-          <video id="recVideo" class="rec-video" controls style="display:none;"></video>
-        </div>
-
-        <div class="instant-section">
-          <h3><i class="fas fa-gamepad"></i> Game Settings</h3>
-          <div class="instant-option">
-            <div>
-              <span>Bigger Iframes</span>
-              <small>Make game and app iframes wider and taller</small>
-            </div>
-            <label class="switch"><input type="checkbox" id="bigIframesToggle"><span class="slider"></span></label>
-          </div>
-        </div>
-
-        <div class="instant-section">
-          <h3><i class="fas fa-wand-magic-sparkles"></i> Animation Settings</h3>
-          <div class="instant-option">
-            <div>
-              <span>Fades</span>
-              <small>Use fade animations in place of the default ones</small>
-            </div>
-            <label class="switch"><input type="checkbox" id="fadesToggle"><span class="slider"></span></label>
-          </div>
-        </div>
-
-        <div class="instant-section">
-          <h3><i class="fas fa-microchip"></i> Performance</h3>
-          <div class="instant-option">
-            <div>
-              <span>Disable Particles</span>
-              <small>Turn off the floating background particles</small>
-            </div>
-            <label class="switch"><input type="checkbox" id="particlesToggle"><span class="slider"></span></label>
-          </div>
-          <div class="instant-option">
-            <div>
-              <span>Simple Mode</span>
-              <small>Strip Bunnies to a cleaner, simpler look</small>
-            </div>
-            <label class="switch"><input type="checkbox" id="simpleModeToggle"><span class="slider"></span></label>
-          </div>
-          <div class="instant-option">
-            <div>
-              <span>Reduce Motion</span>
-              <small>Disable animations and transitions</small>
-            </div>
-            <label class="switch"><input type="checkbox" id="reduceMotionToggle"><span class="slider"></span></label>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script src="/assets/js/app-data.js?v=16"></script>
-  <script src="/assets/js/app-core.js?v=16"></script>
-  <script src="/fetch/uv/uv.bundle.js" defer></script>
-  <script src="/fetch/uv/uv.config.js" defer></script>
-  <script src="/fetch/register-sw.js" defer></script>
-  <script src="/fetch/search.js" defer></script>
-
-  <script src="https://pl30404457.effectivecpmnetwork.com/4b/d2/e0/4bd2e0433588e2fb9d8c999fbd936f74.js"></script>
-  <script src="https://pl30404458.effectivecpmnetwork.com/e6/3a/4f/e63a4fd321c6583dd16a9578d731ae66.js"></script>
-</body>
+    <script src="/fetch/uv/uv.bundle.js"></script>
+    <script src="/fetch/uv/uv.config.js"></script>
+    <script src="/fetch/register-sw.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/cloak.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/home.js"></script>
+    <script>
+      if (typeof registerSW === 'function') registerSW();
+    </script>
+    <script src="https://pl30404457.effectivecpmnetwork.com/4b/d2/e0/4bd2e0433588e2fb9d8c999fbd936f74.js"></script>
+    <script src="https://pl30404458.effectivecpmnetwork.com/e6/3a/4f/e63a4fd321c6583dd16a9578d731ae66.js"></script>
+  </body>
 </html>
