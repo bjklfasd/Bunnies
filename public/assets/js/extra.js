@@ -18,26 +18,23 @@ function proxyUrl(url) {
   if (url.startsWith('/') || url.startsWith('./') || url.startsWith('../') || url.startsWith('data:') || url.startsWith('blob:')) {
     return url;
   }
-  try {
-    if (window.__uv$config && typeof window.__uv$config.encodeUrl === 'function') {
-      return window.__uv$config.prefix + window.__uv$config.encodeUrl(url);
-    }
-  } catch (e) {}
-  try {
-    if (typeof __uv$config !== 'undefined' && typeof __uv$config.encodeUrl === 'function') {
-      return __uv$config.prefix + __uv$config.encodeUrl(url);
-    }
-  } catch (e) {}
-  try {
-    if (typeof UV !== 'undefined' && UV.codec && UV.codec.xor) {
-      // Try direct UV usage
-    }
-  } catch (e) {}
-  // Force proxy for http(s)
-  if (url.startsWith('http')) {
+  if (url.startsWith('http://') || url.startsWith('https://')) {
     try {
-      if (window.__uv$config) {
-        return window.__uv$config.prefix + window.__uv$config.encodeUrl(url);
+      const cfg = window.__uv$config || (typeof __uv$config !== 'undefined' ? __uv$config : null);
+      if (cfg && typeof cfg.encodeUrl === 'function') {
+        return cfg.prefix + cfg.encodeUrl(url);
+      }
+    } catch (e) {}
+    try {
+      if (typeof UV !== 'undefined' && typeof UV.encodeUrl === 'function') {
+        return UV.encodeUrl(url);
+      }
+    } catch (e) {}
+    // Last resort - try to construct UV URL manually
+    try {
+      const cfg = window.__uv$config;
+      if (cfg) {
+        return cfg.prefix + btoa(url).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
       }
     } catch (e) {}
   }
@@ -105,8 +102,9 @@ if (gameName || appName || directUrl) {
   const savedUrl = localStorage.getItem('bunnies-extra-url');
   const savedName = localStorage.getItem('bunnies-extra-name');
   if (savedUrl && playFrame) {
-    playFrame.src = savedUrl;
-    if (playName && savedName) playName.textContent = savedName;
+    if (playName && savedName) playName.textContent = savedName.length > 30 ? savedName.substring(0, 30) + '...' : savedName;
+    const proxied = proxyUrl(savedUrl);
+    playFrame.src = proxied;
   }
 }
 

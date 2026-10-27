@@ -22,10 +22,10 @@ if (homeSearchForm && homeSearchInput) {
     let query = homeSearchInput.value.trim();
     if (!query) return;
     if (!query.startsWith('http://') && !query.startsWith('https://')) {
-      query = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+      query = 'https://duckduckgo.com/?q=' + encodeURIComponent(query);
     }
     localStorage.setItem('bunnies-extra-url', query);
-    localStorage.setItem('bunnies-extra-name', 'Search');
+    localStorage.setItem('bunnies-extra-name', query);
     window.location.href = 'extra.html';
   });
 }
