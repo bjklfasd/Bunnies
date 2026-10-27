@@ -36,6 +36,30 @@ function normalizeUrl(input) {
   return url;
 }
 
+function updateFavicon() {
+  try {
+    const iframeDoc = browserFrame.contentDocument || browserFrame.contentWindow.document;
+    const icons = iframeDoc.querySelectorAll('link[rel*="icon"], link[rel*="shortcut"]');
+    for (let i = 0; i < icons.length; i++) {
+      if (icons[i].href) {
+        browserFavicon.src = icons[i].href;
+        browserFavicon.style.display = 'block';
+        return;
+      }
+    }
+  } catch(e) {}
+  try {
+    const url = browserUrlInput.value;
+    if (url.startsWith('http')) {
+      const domain = new URL(url).origin;
+      browserFavicon.src = domain + '/favicon.ico';
+      browserFavicon.style.display = 'block';
+      return;
+    }
+  } catch(e) {}
+  browserFavicon.src = 'assets/images/favicon.ico';
+}
+
 function loadUrl(input) {
   const url = normalizeUrl(input);
   if (!url || !browserFrame) return;
@@ -43,6 +67,8 @@ function loadUrl(input) {
   browserFrame.src = proxied;
   browserUrlInput.value = url;
   localStorage.setItem('bunnies-more-url', url);
+  setTimeout(updateFavicon, 1000);
+  setTimeout(updateFavicon, 2000);
 }
 
 if (browserGo) {
@@ -63,6 +89,7 @@ if (browserBack) {
   browserBack.addEventListener('click', () => {
     try {
       browserFrame.contentWindow.history.back();
+      setTimeout(updateFavicon, 500);
     } catch(e) {}
   });
 }
@@ -71,6 +98,7 @@ if (browserForward) {
   browserForward.addEventListener('click', () => {
     try {
       browserFrame.contentWindow.history.forward();
+      setTimeout(updateFavicon, 500);
     } catch(e) {}
   });
 }
@@ -83,6 +111,19 @@ if (browserRefresh) {
       const src = browserFrame.src;
       browserFrame.src = src;
     }
+    setTimeout(updateFavicon, 1000);
+  });
+}
+
+if (browserFrame) {
+  browserFrame.addEventListener('load', () => {
+    setTimeout(updateFavicon, 500);
+    try {
+      const iframeDoc = browserFrame.contentDocument || browserFrame.contentWindow.document;
+      if (iframeDoc && iframeDoc.title) {
+        document.title = iframeDoc.title + ' - Bunnies';
+      }
+    } catch(e) {}
   });
 }
 
